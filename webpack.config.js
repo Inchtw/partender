@@ -68,6 +68,11 @@ module.exports = (env, argv) => {
             from: 'src/styles',
             to: 'styles',
             noErrorOnMissing: true
+          },
+          {
+            from: 'CNAME',
+            to: '',
+            noErrorOnMissing: true
           }
         ],
       }),
