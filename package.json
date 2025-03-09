@@ -2,6 +2,7 @@
   "name": "partender-website",
   "version": "1.0.0",
   "description": "Partender 派對調酒專家網站",
+  "homepage": "https://inchtw.github.io/partender/",
   "main": "index.js",
   "scripts": {
     "start": "webpack serve --mode development",
