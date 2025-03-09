@@ -37,10 +37,15 @@ function setupNavbar() {
 
 // 設置移動端菜單
 function setupMobileMenu() {
-  mobileMenuBtn.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-    mobileMenuBtn.classList.toggle('active');
-  });
+  if (mobileMenuBtn) {
+    mobileMenuBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      navLinks.classList.toggle('active');
+      mobileMenuBtn.classList.toggle('active');
+      console.log('Mobile menu clicked');
+    });
+  }
 
   // 點擊導航鏈接後關閉菜單
   const navItems = document.querySelectorAll('.nav-link');
@@ -49,6 +54,17 @@ function setupMobileMenu() {
       navLinks.classList.remove('active');
       mobileMenuBtn.classList.remove('active');
     });
+  });
+
+  // 點擊頁面其他區域關閉菜單
+  document.addEventListener('click', (e) => {
+    if (navLinks.classList.contains('active') && 
+        !navLinks.contains(e.target) && 
+        e.target !== mobileMenuBtn && 
+        !mobileMenuBtn.contains(e.target)) {
+      navLinks.classList.remove('active');
+      mobileMenuBtn.classList.remove('active');
+    }
   });
 }
 
