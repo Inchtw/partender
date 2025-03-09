@@ -1,0 +1,123 @@
+/* SweetAlert2 自定義樣式 */
+@import 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css';
+
+.partender-alert-popup {
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.partender-alert-title {
+  font-family: 'Poppins', 'Noto Sans TC', sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #F7F7F7;
+}
+
+.partender-alert-content {
+  font-family: 'Poppins', 'Noto Sans TC', sans-serif;
+  font-size: 1rem;
+  color: #C7C7C7;
+  line-height: 1.6;
+}
+
+.partender-alert-icon {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.partender-alert-confirm {
+  background-color: var(--secondary-color);
+  color: var(--dark-bg);
+  border-radius: 2rem;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  font-family: 'Poppins', 'Noto Sans TC', sans-serif;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  border: none;
+  box-shadow: 0 4px 10px rgba(78, 205, 196, 0.3);
+  margin: 0.5rem;
+}
+
+.partender-alert-confirm:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(78, 205, 196, 0.4);
+}
+
+/* 錯誤按鈕樣式 */
+.partender-alert-popup .swal2-error + .swal2-html-container + .partender-alert-actions .partender-alert-confirm {
+  background-color: #FF6B6B;
+  box-shadow: 0 4px 10px rgba(255, 107, 107, 0.3);
+}
+
+.partender-alert-popup .swal2-error + .swal2-html-container + .partender-alert-actions .partender-alert-confirm:hover {
+  box-shadow: 0 6px 15px rgba(255, 107, 107, 0.4);
+}
+
+/* 警告按鈕樣式 */
+.partender-alert-popup .swal2-warning + .swal2-html-container + .partender-alert-actions .partender-alert-confirm {
+  background-color: #FFE66D;
+  color: #16213E !important;
+  box-shadow: 0 4px 10px rgba(255, 230, 109, 0.3);
+}
+
+.partender-alert-popup .swal2-warning + .swal2-html-container + .partender-alert-actions .partender-alert-confirm:hover {
+  box-shadow: 0 6px 15px rgba(255, 230, 109, 0.4);
+}
+
+.partender-alert-cancel {
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  border-radius: 2rem;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  font-family: 'Poppins', 'Noto Sans TC', sans-serif;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  border: none;
+  box-shadow: 0 4px 10px rgba(255, 107, 107, 0.3);
+  margin: 0.5rem;
+}
+
+.partender-alert-cancel:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(255, 107, 107, 0.4);
+}
+
+.partender-alert-actions {
+  margin-top: 1.5rem;
+}
+
+.partender-alert-image {
+  margin: 1rem auto;
+}
+
+/* 吐司提示樣式 */
+.swal2-toast {
+  background-color: var(--dark-secondary) !important;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2) !important;
+  border-radius: 0.5rem !important;
+  padding: 1rem !important;
+}
+
+.swal2-toast .swal2-title {
+  font-family: 'Poppins', 'Noto Sans TC', sans-serif;
+  font-size: 0.95rem !important;
+  color: var(--text-light) !important;
+}
+
+.swal2-toast .swal2-icon {
+  margin: 0 0.5rem 0 0 !important;
+}
+
+/* 加載動畫樣式 */
+.swal2-loader {
+  border-color: var(--secondary-color) transparent var(--secondary-color) transparent !important;
+} 
