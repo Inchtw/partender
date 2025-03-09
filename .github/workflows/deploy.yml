@@ -6,12 +6,18 @@ on:
       - master
       - main  # 同时支持main和master分支名称
 
+# 設置權限
+permissions:
+  contents: write
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+        with:
+          persist-credentials: true  # 確保保留認證信息
 
       - name: Setup Node.js
         uses: actions/setup-node@v3

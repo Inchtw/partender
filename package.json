@@ -10,7 +10,7 @@
     "watch": "webpack --watch --mode development",
     "test": "echo \"Error: no test specified\" && exit 1",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist --repo https://github.com/Inchtw/partender.git"
   },
   "keywords": [
     "cocktail",
