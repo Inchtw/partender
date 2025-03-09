@@ -157,7 +157,7 @@
         <!-- <li><button id="loginBtn" class="nav-link login-btn">會員登入</button></li> -->
       </ul>
       
-      <button id="mobileMenuBtn" class="mobile-menu-btn">
+      <button id="mobileMenuBtn" class="mobile-menu-btn" aria-label="開啟選單">
         <i class="fas fa-bars"></i>
       </button>
     </div>
@@ -219,11 +219,11 @@
   </section>
 
   <!-- 關於我們 -->
-  <section id="about" class="about" style="background-color: #1a1a2e; color: #fff; padding: 80px 0;">
+  <section id="about" class="about" style="background-color: #1a1a2e; color: #fff; padding: 80px 0; overflow-x: hidden; width: 100%; box-sizing: border-box;">
     <div class="container">
       <h2>關於 <span class="highlight">我們</span></h2>
-      <div class="about-container" style="display: flex; flex-wrap: wrap; flex-direction: row; align-items: center; gap: 50px; position: relative;">
-        <div class="about-image-wrapper" style="flex: 1 1 45%; position: relative; max-width: 450px; margin-left: 20px;">
+      <div class="about-container" style="display: flex; flex-wrap: wrap; flex-direction: row; align-items: center; gap: 50px; position: relative; width: 100%; box-sizing: border-box;">
+        <div class="about-image-wrapper" style="flex: 1 1 45%; position: relative; max-width: 450px; margin-left: 20px; box-sizing: border-box;">
           <div style="position: absolute; top: -30px; left: -30px; width: 100px; height: 100px; background-color: #ff2e63; opacity: 0.2; border-radius: 8px; z-index: 1;"></div>
           <div class="about-image animate-on-scroll" style="position: relative; overflow: hidden; border-radius: 16px; height: 450px; background-color: #252538; box-shadow: 0 10px 30px rgba(0,0,0,0.3); z-index: 2;">
             <img 
@@ -236,10 +236,10 @@
           </div>
           <div style="position: absolute; bottom: -40px; right: -40px; width: 150px; height: 150px; background-color: #252538; opacity: 0.3; border-radius: 8px; z-index: 1;"></div>
         </div>
-        <div class="about-content animate-on-scroll" style="flex: 1 1 45%; padding: 20px 30px;">
+        <div class="about-content animate-on-scroll" style="flex: 1 1 45%; padding: 20px 30px; box-sizing: border-box; width: 100%;">
           <h3 class="about-title" style="font-size: 32px; margin-bottom: 30px; color: #fff; font-weight: 700;">「派對調酒不該是難喝的代名詞」</h3>
-          <p class="about-text" style="margin-bottom: 20px; line-height: 1.8; color: #e0e0e0; font-size: 16px;">Partender 由一群來自台大的調酒愛好者創立，融合台灣在地風味，專注於打造精緻的派對調酒體驗。源於一個簡單信念：派對飲品應該和派對本身一樣令人愉悅。</p>
-          <p class="about-text" style="margin-bottom: 30px; line-height: 1.8; color: #e0e0e0; font-size: 16px;">我們相信，美好的時刻需要美好的飲品相伴。無論是生日聚會、婚禮慶典還是企業活動，我們的特調不僅是飲品，更是為您活動增添色彩的魔法藥水，讓每一位賓客在歡樂氣氛中留下難忘的味蕾記憶。</p>
+          <p class="about-text" style="margin-bottom: 20px; line-height: 1.8; color: #e0e0e0; font-size: 16px; width: 100%; box-sizing: border-box; word-wrap: break-word; overflow-wrap: break-word;">Partender 由一群來自台大的調酒愛好者創立，融合台灣在地風味，專注於打造精緻的派對調酒體驗。源於一個簡單信念：派對飲品應該和派對本身一樣令人愉悅。</p>
+          <p class="about-text" style="margin-bottom: 30px; line-height: 1.8; color: #e0e0e0; font-size: 16px; width: 100%; box-sizing: border-box; word-wrap: break-word; overflow-wrap: break-word;">我們相信，美好的時刻需要美好的飲品相伴。無論是生日聚會、婚禮慶典還是企業活動，我們的特調不僅是飲品，更是為您活動增添色彩的魔法藥水，讓每一位賓客在歡樂氣氛中留下難忘的味蕾記憶。</p>
           <a href="#contact" class="btn btn-primary" style="padding: 12px 30px; font-weight: 600; border-radius: 4px; background-color: #ff2e63; border: none; margin-top: 10px;">與我們合作</a>
         </div>
       </div>
@@ -473,7 +473,7 @@
           >
           <span>Partender</span>
         </div>
-        <p class="footer-text">Party + Bartender = 派對調酒專家</p>
+        <p class="footer-text">Party + Bartender = 你的派對魔法師</p>
       </div>
       <div>
         <p>© <span id="currentYear">2023</span> Partender. 版權所有.</p>
