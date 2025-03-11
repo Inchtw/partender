@@ -41,6 +41,7 @@
   transition: all var(--transition-speed) ease;
   filter: drop-shadow(0 2px 4px rgba(255, 107, 107, 0.3));
   object-fit: contain;
+  margin-bottom: 3px;
 }
 
 .navbar.scrolled .logo-img {
@@ -54,6 +55,8 @@
   letter-spacing: 1px;
   transition: all var(--transition-speed) ease;
   position: relative;
+  padding-bottom: 3px;
+  margin-top: 6px;
 }
 
 .logo-text::after {
@@ -76,6 +79,7 @@
 
 .navbar.scrolled .logo-text {
   font-size: 1.5rem;
+  margin-top: 4px;
 }
 
 .nav-links {
@@ -84,6 +88,7 @@
   margin: 0;
   padding: 0;
   align-items: center;
+  justify-content: flex-end;
 }
 
 .nav-links li {
@@ -140,19 +145,23 @@
 
 .mobile-menu-btn {
   display: none;
-  background: transparent;
+  background-color: transparent;
   border: none;
   color: #ffffff;
   font-size: 24px;
   cursor: pointer;
   transition: color 0.3s ease;
-  padding: 15px;
+  padding: 10px;
   z-index: 3000;
   position: relative;
   width: 50px;
   height: 50px;
   line-height: 1;
   text-align: center;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .mobile-menu-btn.active {
@@ -184,11 +193,11 @@
     z-index: 2000;
     padding: 20px;
     box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+    display: flex;
   }
   
   .nav-links.active {
     right: 0;
-    display: flex;
   }
   
   .nav-links li {
@@ -205,6 +214,16 @@
   }
   
   .mobile-menu-btn {
-    display: block;
+    display: flex;
+  }
+  
+  .logo-text {
+    font-size: 1.6rem;
+    margin-top: 5px;
+  }
+  
+  .navbar.scrolled .logo-text {
+    font-size: 1.4rem;
+    margin-top: 3px;
   }
 } 
