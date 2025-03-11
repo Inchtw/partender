@@ -94,12 +94,46 @@ function setupScrollEvents(): void {
 function setupMobileMenu(): void {
   if (!mobileMenuBtn || !navLinks) return;
   
-  mobileMenuBtn.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-    mobileMenuBtn.classList.toggle('active');
-    
-    // 追蹤事件
-    trackEvent('navigation', 'mobile_menu_toggle');
+  console.log('設置移動端菜單');
+  
+  // 確保在DOM加載完成後綁定事件
+  document.addEventListener('DOMContentLoaded', () => {
+    if (mobileMenuBtn) {
+      console.log('找到移動端菜單按鈕');
+      
+      mobileMenuBtn.addEventListener('click', (e) => {
+        console.log('移動端菜單按鈕被點擊');
+        e.preventDefault();
+        e.stopPropagation();
+        
+        navLinks.classList.toggle('active');
+        mobileMenuBtn.classList.toggle('active');
+        
+        // 追蹤事件
+        trackEvent('navigation', 'mobile_menu_toggle');
+      });
+    }
+  });
+  
+  // 點擊導航鏈接後關閉菜單
+  const navLinkElements = navLinks.querySelectorAll('a');
+  navLinkElements.forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('active');
+      mobileMenuBtn.classList.remove('active');
+    });
+  });
+  
+  // 點擊頁面其他區域關閉菜單
+  document.addEventListener('click', (e) => {
+    const target = e.target as Node;
+    if (navLinks.classList.contains('active') && 
+        !navLinks.contains(target) && 
+        target !== mobileMenuBtn &&
+        !mobileMenuBtn.contains(target)) {
+      navLinks.classList.remove('active');
+      mobileMenuBtn.classList.remove('active');
+    }
   });
 }
 

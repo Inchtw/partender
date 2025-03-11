@@ -160,24 +160,6 @@ export const mockServices: ServiceItem[] = [
     title: '私人派對調酒',
     description: '為生日派對、家庭聚會、朋友聚會等私人活動提供調酒服務，讓您的派對更加精彩難忘。',
     icon: 'user-friends'
-  },
-  {
-    id: '4',
-    title: '調酒課程與工作坊',
-    description: '提供專業調酒課程和互動式工作坊，適合團隊建設、生日派對或朋友聚會，學習調酒技巧的同時享受樂趣。',
-    icon: 'chalkboard-teacher'
-  },
-  {
-    id: '5',
-    title: '分子調酒表演',
-    description: '使用液態氮、煙霧等特殊效果的分子調酒表演，為您的活動增添視覺震撼和話題性。',
-    icon: 'flask'
-  },
-  {
-    id: '6',
-    title: '客製化雞尾酒設計',
-    description: '根據您的喜好、活動主題或品牌形象，定制獨特的雞尾酒配方和呈現方式。',
-    icon: 'magic'
   }
 ];
 

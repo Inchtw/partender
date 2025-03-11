@@ -157,7 +157,7 @@
         <!-- <li><button id="loginBtn" class="nav-link login-btn">會員登入</button></li> -->
       </ul>
       
-      <button id="mobileMenuBtn" class="mobile-menu-btn" aria-label="開啟選單">
+      <button onclick="document.getElementById('navLinks').classList.toggle('active'); this.classList.toggle('active');" id="mobileMenuBtn" class="mobile-menu-btn" aria-label="開啟選單">
         <i class="fas fa-bars"></i>
       </button>
     </div>
@@ -451,7 +451,9 @@
               <textarea id="message" class="form-textarea" required></textarea>
             </div>
             
-            <button type="submit" class="btn btn-primary dev-mode-btn">送出訊息</button>
+            <div class="text-center">
+              <button type="submit" class="btn btn-primary dev-mode-btn">送出訊息</button>
+            </div>
           </form>
         </div>
       </div>
@@ -461,23 +463,22 @@
   <!-- 頁腳 -->
   <footer class="footer">
     <div class="container footer-container">
-      <div>
-        <div class="footer-logo">
+      <div class="footer-content">
+        <div class="footer-logo-wrapper">
           <img 
             src="https://res.cloudinary.com/df4ru2dy3/image/upload/v1741523209/logo-white_hw3odm.png" 
             alt="Partender Logo" 
-            class="logo-img" 
-            style="height: 50px; width: auto;"
+            class="footer-logo-img" 
             data-original-src="https://res.cloudinary.com/df4ru2dy3/image/upload/v1741523209/logo-white_hw3odm.png"
             onerror="handleImageError(this)"
           >
-          <span>Partender</span>
+          <h2 class="footer-title">Partender</h2>
         </div>
-        <p class="footer-text">Party + Bartender = 你的派對魔法師</p>
+        <p class="footer-subtitle">Party + Bartender = 你的派對魔法師</p>
       </div>
-      <div>
+      <div class="footer-copyright">
         <p>© <span id="currentYear">2023</span> Partender. 版權所有.</p>
-        <p class="text-sm mt-1">本網站內容僅供年滿18歲以上人士瀏覽</p>
+        <p class="text-sm">本網站內容僅供年滿18歲以上人士瀏覽</p>
       </div>
     </div>
   </footer>
