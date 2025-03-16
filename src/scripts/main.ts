@@ -247,52 +247,47 @@ function renderServiceItems(items: ServiceItem[]): void {
 function setupContactForm(): void {
   if (!contactForm) return;
   
-  contactForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
+  // 定義一個變量來跟踪表單是否已提交
+  let submitted = false;
+  
+  // 監聽隱藏iframe的加載事件
+  const hiddenIframe = document.getElementById('hidden_iframe');
+  if (hiddenIframe) {
+    hiddenIframe.addEventListener('load', () => {
+      if (submitted) {
+        // 表單已成功提交
+        // 重置表單
+        contactForm.reset();
+        
+        // 顯示成功訊息
+        alert('感謝您的訊息！我們會盡快回覆您。');
+        
+        // 追蹤表單提交
+        trackEvent('contact_form_submit', 'success');
+        
+        // 重置提交狀態
+        submitted = false;
+      }
+    });
+  }
+  
+  // 監聽表單提交事件
+  contactForm.addEventListener('submit', (e) => {
+    // 不阻止默認提交行為，因為我們希望表單直接提交到Google表單
     
+    // 簡單驗證
     const nameInput = contactForm.querySelector('#name') as HTMLInputElement;
     const emailInput = contactForm.querySelector('#email') as HTMLInputElement;
     const messageInput = contactForm.querySelector('#message') as HTMLTextAreaElement;
     
-    // 簡單驗證
     if (!nameInput.value || !emailInput.value || !messageInput.value) {
+      e.preventDefault(); // 如果驗證失敗，阻止提交
       alert('請填寫所有必填欄位');
       return;
     }
     
-    // 開發模式：暫時不提交表單
-    alert('網站開發中，表單暫時無法提交。我們會盡快完成此功能。');
-    
-    // 重置表單
-    contactForm.reset();
-    
-    /* 
-    // 收集表單數據
-    const formData = {
-      name: nameInput.value,
-      email: emailInput.value,
-      phone: phoneInput.value,
-      message: messageInput.value,
-      submittedAt: new Date().toISOString()
-    };
-    
-    try {
-      // 保存到 Firebase
-      await saveContactForm(formData);
-      
-      // 追蹤表單提交
-      trackEvent('contact_form_submit', 'success');
-      
-      // 重置表單
-      contactForm.reset();
-      
-      // 顯示成功訊息
-      alert('感謝您的訊息！我們會盡快回覆您。');
-    } catch (error) {
-      console.error('表單提交失敗:', error);
-      alert('訊息發送失敗，請稍後再試。');
-    }
-    */
+    // 設置提交狀態為true
+    submitted = true;
   });
 }
 

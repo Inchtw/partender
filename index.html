@@ -58,6 +58,9 @@
       img.src = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=';
       console.error('圖片加載失敗:', img.getAttribute('data-original-src') || img.src);
     }
+    
+    // 定義全局變量用於表單提交
+    var submitted = false;
   </script>
 </head>
 <body>
@@ -395,8 +398,7 @@
       <h2>聯絡 <span class="highlight">我們</span></h2>
       <div class="contact-container">
         <div class="contact-info animate-on-scroll">
-          <h3 class="contact-title">預約服務或諮詢</h3>
-          <p class="contact-text">無論您有什麼問題或需求，請隨時與我們聯繫。</p>
+          <p class="contact-text">有什麼需求，歡迎與我們聯繫。</p>
           
           <!-- <div class="contact-item">
             <div class="contact-icon">
@@ -430,31 +432,34 @@
         </div>
         
         <div class="contact-form animate-on-scroll">
-          <form id="contactForm">
+          <form id="contactForm" class="form" action="https://docs.google.com/forms/d/e/1FAIpQLSewRmmjU906K7JyKZreh1W4FUgXhB-Fne5pGUmQ7g7tBT9ZCA/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true;">
             <div class="form-group">
-              <label for="name" class="form-label">姓名</label>
-              <input type="text" id="name" class="form-input" required>
+              <label for="name" class="form-label">姓名 *</label>
+              <input type="text" id="name" name="entry.1123990999" class="form-input" required>
             </div>
             
             <div class="form-group">
-              <label for="email" class="form-label">電子郵件</label>
-              <input type="email" id="email" class="form-input" required>
+              <label for="email" class="form-label">電子郵件 *</label>
+              <input type="email" id="email" name="entry.854030997" class="form-input" required>
             </div>
             
             <div class="form-group">
-              <label for="phone" class="form-label">手機號碼</label>
-              <input type="tel" id="phone" class="form-input">
+              <label for="phone" class="form-label">電話號碼</label>
+              <input type="tel" id="phone" name="entry.1642375089" class="form-input">
             </div>
             
             <div class="form-group">
-              <label for="message" class="form-label">訊息內容</label>
-              <textarea id="message" class="form-textarea" required></textarea>
+              <label for="message" class="form-label">訊息內容 *</label>
+              <textarea id="message" name="entry.2057153632" class="form-textarea" rows="5" required></textarea>
             </div>
             
-            <div class="text-center">
-              <button type="submit" class="btn btn-primary dev-mode-btn">送出訊息</button>
-            </div>
+            <button type="submit" class="btn btn-primary w-full">發送訊息</button>
+            
+            <p class="form-note" style="margin-top: 15px; font-size: 0.85rem; color: var(--text-secondary);">
+              * 請確保填寫正確，以便我們能夠與您取得聯繫。
+            </p>
           </form>
+          <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
         </div>
       </div>
     </div>
