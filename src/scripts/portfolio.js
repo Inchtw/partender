@@ -405,13 +405,24 @@ document.addEventListener('DOMContentLoaded', function() {
     const modalContent = document.createElement('div');
     modalContent.className = 'portfolio-thumbnails-content';
     
-    // 創建關閉按鈕
-    const closeBtn = document.createElement('div');
-    closeBtn.className = 'portfolio-modal-close';
+    // 創建關閉按鈕 (左上角)
+    const closeBtn = document.createElement('button');
+    closeBtn.className = 'portfolio-modal-close top-close';
     closeBtn.innerHTML = '&times;';
     closeBtn.setAttribute('aria-label', '關閉');
     closeBtn.setAttribute('role', 'button');
     closeBtn.addEventListener('click', () => {
+      thumbnailsModal.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+    
+    // 創建第二個關閉按鈕 (右下角)
+    const bottomCloseBtn = document.createElement('button');
+    bottomCloseBtn.className = 'portfolio-modal-close bottom-close';
+    bottomCloseBtn.innerHTML = '&times;';
+    bottomCloseBtn.setAttribute('aria-label', '關閉底部');
+    bottomCloseBtn.setAttribute('role', 'button');
+    bottomCloseBtn.addEventListener('click', () => {
       thumbnailsModal.classList.remove('active');
       document.body.style.overflow = '';
     });
@@ -457,7 +468,7 @@ document.addEventListener('DOMContentLoaded', function() {
       img.onload = function() {
         // 檢查圖片是否為直式（高度大於寬度）
         if (this.naturalHeight > this.naturalWidth) {
-          this.style.objectPosition = 'center top';
+          this.style.objectPosition = 'center center';
         }
       };
       
@@ -530,10 +541,16 @@ document.addEventListener('DOMContentLoaded', function() {
       grid.appendChild(thumbnail);
     });
     
+    // 創建底部安全區域，防止內容被底部菜單欄遮擋
+    const safeArea = document.createElement('div');
+    safeArea.className = 'details-bottom-safe-area';
+    
     // 組裝模態框
     modalContent.appendChild(closeBtn);
     modalContent.appendChild(title);
     modalContent.appendChild(grid);
+    modalContent.appendChild(safeArea);
+    modalContent.appendChild(bottomCloseBtn);
     thumbnailsModal.appendChild(modalContent);
     
     // 添加到body
@@ -599,7 +616,7 @@ function setupPortfolioModal() {
     image.onload = function() {
       // 檢查圖片是否為直式（高度大於寬度）
       if (this.naturalHeight > this.naturalWidth) {
-        this.style.objectPosition = 'center top';
+        this.style.objectPosition = 'center center';
         console.log('直式圖片已檢測到：', item.title, this.naturalWidth, 'x', this.naturalHeight);
       }
     };
@@ -738,12 +755,24 @@ function setupPortfolioModal() {
       details.appendChild(navContainer);
     }
     
-    // 關閉按鈕
+    // 創建底部安全區域，防止內容被底部菜單欄遮擋
+    const safeArea = document.createElement('div');
+    safeArea.className = 'details-bottom-safe-area';
+    details.appendChild(safeArea);
+    
+    // 頂部關閉按鈕
     const closeBtn = document.createElement('button');
     closeBtn.className = 'portfolio-modal-close';
     closeBtn.innerHTML = '&times;';
     closeBtn.setAttribute('aria-label', '關閉');
     closeBtn.setAttribute('role', 'button');
+    
+    // 底部關閉按鈕
+    const bottomCloseBtn = document.createElement('button');
+    bottomCloseBtn.className = 'portfolio-modal-close bottom-close';
+    bottomCloseBtn.innerHTML = '&times;';
+    bottomCloseBtn.setAttribute('aria-label', '關閉底部');
+    bottomCloseBtn.setAttribute('role', 'button');
     
     // 添加到模態窗口
     modalContent.appendChild(imageWrapper);
@@ -751,6 +780,7 @@ function setupPortfolioModal() {
     modal.appendChild(modalContent);
     modal.appendChild(closeBtn);
     modalContainer.appendChild(modal);
+    modalContainer.appendChild(bottomCloseBtn);
     
     // 添加到頁面
     document.body.appendChild(modalContainer);
@@ -758,6 +788,11 @@ function setupPortfolioModal() {
     
     // 事件監聽器
     closeBtn.addEventListener('click', () => {
+      modalContainer.remove();
+      document.body.style.overflow = '';
+    });
+    
+    bottomCloseBtn.addEventListener('click', () => {
       modalContainer.remove();
       document.body.style.overflow = '';
     });
