@@ -592,6 +592,7 @@ function setupPortfolioModal() {
     const imageContainer = document.createElement('div');
     imageContainer.className = 'portfolio-modal-image';
     
+    // 創建當前顯示的圖片
     const image = document.createElement('img');
     image.src = item.mainImage;
     image.alt = item.title;
@@ -604,6 +605,84 @@ function setupPortfolioModal() {
     };
     
     imageContainer.appendChild(image);
+    
+    // 創建圖片區域包裝器（包含主圖片和圖片庫）
+    const imageWrapper = document.createElement('div');
+    imageWrapper.className = 'portfolio-modal-image-wrapper';
+    imageWrapper.appendChild(imageContainer);
+    
+    // 組合圖片庫
+    const hasGallery = item.gallery && item.gallery.length > 0;
+    
+    // 圖片庫切換 - 現在放在圖片下方
+    if (hasGallery) {
+      // 創建圖片切換容器
+      const galleryContainer = document.createElement('div');
+      galleryContainer.className = 'image-gallery-nav';
+      
+      // 添加主圖片選項
+      const mainImageOption = document.createElement('button');
+      mainImageOption.className = 'image-option active';
+      mainImageOption.dataset.index = -1; // 使用-1表示主圖片
+      mainImageOption.setAttribute('aria-label', '主圖片');
+      
+      // 創建主圖片縮略圖
+      const mainThumbnail = document.createElement('div');
+      mainThumbnail.className = 'image-thumbnail';
+      mainThumbnail.style.backgroundImage = `url(${item.mainImage})`;
+      mainImageOption.appendChild(mainThumbnail);
+      
+      mainImageOption.addEventListener('click', () => {
+        // 更新當前顯示的圖片
+        image.src = item.mainImage;
+        image.alt = item.title;
+        
+        // 更新選中狀態
+        document.querySelectorAll('.image-option').forEach(opt => opt.classList.remove('active'));
+        mainImageOption.classList.add('active');
+      });
+      
+      galleryContainer.appendChild(mainImageOption);
+      
+      // 添加圖庫圖片選項
+      item.gallery.forEach((galleryItem, index) => {
+        const imageOption = document.createElement('button');
+        imageOption.className = 'image-option';
+        imageOption.dataset.index = index;
+        imageOption.setAttribute('aria-label', galleryItem.caption || `圖片 ${index + 1}`);
+        
+        // 創建縮略圖
+        const thumbnail = document.createElement('div');
+        thumbnail.className = 'image-thumbnail';
+        thumbnail.style.backgroundImage = `url(${galleryItem.image})`;
+        imageOption.appendChild(thumbnail);
+        
+        imageOption.addEventListener('click', () => {
+          // 更新當前顯示的圖片
+          image.src = galleryItem.image;
+          image.alt = galleryItem.caption || item.title;
+          
+          // 更新選中狀態
+          document.querySelectorAll('.image-option').forEach(opt => opt.classList.remove('active'));
+          imageOption.classList.add('active');
+        });
+        
+        galleryContainer.appendChild(imageOption);
+      });
+      
+      // 將圖片切換選項添加到圖片區域下方
+      const galleryNavTitle = document.createElement('h4');
+      galleryNavTitle.className = 'gallery-nav-title';
+      galleryNavTitle.textContent = '更多照片';
+      
+      const gallerySection = document.createElement('div');
+      gallerySection.className = 'portfolio-modal-gallery-section';
+      gallerySection.appendChild(galleryNavTitle);
+      gallerySection.appendChild(galleryContainer);
+      
+      // 添加到圖片包裝器中
+      imageWrapper.appendChild(gallerySection);
+    }
     
     // 創建詳情容器
     const details = document.createElement('div');
@@ -625,8 +704,9 @@ function setupPortfolioModal() {
     details.appendChild(title);
     details.appendChild(description);
     
-    // 創建導航按鈕
-    if (allItems && allItems.length > 1) {
+    // 創建項目間的導航按鈕
+    const hasMultipleItems = allItems && allItems.length > 1;
+    if (hasMultipleItems) {
       const currentIndex = allItems.findIndex(i => i.id === item.id);
       const navContainer = document.createElement('div');
       navContainer.className = 'gallery-nav';
@@ -663,9 +743,10 @@ function setupPortfolioModal() {
     closeBtn.className = 'portfolio-modal-close';
     closeBtn.innerHTML = '&times;';
     closeBtn.setAttribute('aria-label', '關閉');
+    closeBtn.setAttribute('role', 'button');
     
     // 添加到模態窗口
-    modalContent.appendChild(imageContainer);
+    modalContent.appendChild(imageWrapper);
     modalContent.appendChild(details);
     modal.appendChild(modalContent);
     modal.appendChild(closeBtn);

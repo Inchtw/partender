@@ -330,7 +330,9 @@ function setupCounterAnimation(): void {
         const interval = Math.ceil(duration / target);
         
         const timer = setInterval(() => {
-          count += 1;
+          // 根據目標值調整增量,讓動畫更流暢
+          const increment = target > 1000 ? 51 : 1;
+          count += increment;
           counter.textContent = count.toString();
           
           if (count >= target) {
