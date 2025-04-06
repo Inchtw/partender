@@ -324,10 +324,10 @@
   position: absolute;
   top: 1rem;
   right: 1rem;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 40px;
+  height: 40px;
   background-color: rgba(0, 0, 0, 0.7);
-  border-radius: 50%;
+  border-radius: 50% !important;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -339,7 +339,11 @@
   border: 2px solid rgba(255, 255, 255, 0.5);
   outline: none;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.2);
-  aspect-ratio: 1/1;
+  overflow: hidden;
+  padding: 0;
+  -webkit-appearance: none;
+  -webkit-border-radius: 50%;
+  box-sizing: border-box;
 }
 
 .portfolio-modal-close:hover {
@@ -357,8 +361,6 @@
   border: 2px solid white;
   z-index: 100;
   position: fixed;
-  border-radius: 50%;
-  aspect-ratio: 1/1;
   display: none;
 }
 
@@ -367,26 +369,22 @@
   position: absolute;
   top: 0.8rem;
   right: 0.8rem;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 40px;
+  height: 40px;
   font-size: 1.8rem;
   background-color: var(--primary-color);
   border: 2px solid white;
-  border-radius: 50%;
-  aspect-ratio: 1/1;
 }
 
 .portfolio-thumbnails-content .portfolio-modal-close.bottom-close {
   position: absolute;
   bottom: 1rem;
   right: 1rem;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 40px;
+  height: 40px;
   font-size: 1.8rem;
   background-color: var(--primary-color);
   border: 2px solid white;
-  border-radius: 50%;
-  aspect-ratio: 1/1;
   display: none;
 }
 
@@ -675,26 +673,14 @@
   .portfolio-modal-close,
   .portfolio-thumbnails-content .portfolio-modal-close.top-close,
   .portfolio-thumbnails-content .portfolio-modal-close.bottom-close {
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 40px;
+    height: 40px;
     font-size: 1.7rem;
     background-color: var(--primary-color);
     border: 2px solid white;
-    border-radius: 50%;
-    aspect-ratio: 1/1;
   }
   
-  .gallery-nav-btn {
-    min-width: 70px;
-    padding: 0.7rem 1rem;
-    font-size: 0.9rem;
-  }
-  
-  .portfolio-modal-image img {
-    max-height: 45vh;
-  }
-  
-  /* 在中等屏幕上显示底部关闭按钮 */
+  /* 在中等屏幕上顯示底部關閉按鈕 */
   .portfolio-modal-close.bottom-close,
   .portfolio-thumbnails-content .portfolio-modal-close.bottom-close {
     display: flex;
@@ -783,16 +769,14 @@
   .portfolio-thumbnails-content .portfolio-modal-close.top-close {
     top: 0.8rem;
     right: 0.8rem;
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 40px;
+    height: 40px;
     font-size: 1.8rem;
     background-color: var(--primary-color);
     color: #fff;
     border: 2px solid white;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
     z-index: 100;
-    border-radius: 50%;
-    aspect-ratio: 1/1;
     display: none;
   }
   
@@ -802,11 +786,9 @@
     top: auto;
     bottom: 1rem;
     right: 1rem;
-    width: 3rem;
-    height: 3rem;
+    width: 48px;
+    height: 48px;
     font-size: 2rem;
-    border-radius: 50%;
-    aspect-ratio: 1/1;
     position: fixed;
     z-index: 200;
   }
@@ -869,10 +851,28 @@
 
 /* 進一步的細節調整，確保關閉按鈕在所有設備上都易於使用 */
 @media (max-width: 380px) {
-  .portfolio-modal-close {
-    width: 45px;
-    height: 45px;
+  .portfolio-modal-close.bottom-close,
+  .portfolio-thumbnails-content .portfolio-modal-close.bottom-close {
+    width: 48px;
+    height: 48px;
     font-size: 2rem;
+    /* 確保完美圓形 */
+    border-radius: 50% !important;
+    -webkit-border-radius: 50%;
+  }
+}
+
+/* 針對Safari的特殊修復 */
+@supports (-webkit-touch-callout: none) {
+  .portfolio-modal-close,
+  .portfolio-thumbnails-content .portfolio-modal-close.top-close,
+  .portfolio-modal-close.bottom-close,
+  .portfolio-thumbnails-content .portfolio-modal-close.bottom-close {
+    /* Safari特定的圓角和尺寸定義 */
+    -webkit-border-radius: 50%;
+    border-radius: 50% !important;
+    width: 48px;
+    height: 48px;
   }
 }
 
@@ -1164,13 +1164,13 @@
   .portfolio-thumbnails-content .portfolio-modal-close.top-close,
   .portfolio-modal-close.bottom-close,
   .portfolio-thumbnails-content .portfolio-modal-close.bottom-close {
-    width: 3rem;
-    height: 3rem;
+    width: 48px;
+    height: 48px;
     font-size: 2rem;
     border-width: 2px;
     z-index: 200;
-    border-radius: 50%;
-    aspect-ratio: 1/1;
+    -webkit-border-radius: 50%;
+    border-radius: 50% !important;
   }
   
   .portfolio-modal-close,
