@@ -216,14 +216,4 @@
   .mobile-menu-btn {
     display: flex;
   }
-  
-  .logo-text {
-    font-size: 1.6rem;
-    margin-top: 5px;
-  }
-  
-  .navbar.scrolled .logo-text {
-    font-size: 1.4rem;
-    margin-top: 3px;
-  }
 } 
