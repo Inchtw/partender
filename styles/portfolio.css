@@ -346,17 +346,30 @@
   transform: scale(1.1);
 }
 
-.portfolio-modal-image {
+/* 圖片區域包裝器 */
+.portfolio-modal-image-wrapper {
   width: 50%;
-  height: 100%;
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.portfolio-modal-image {
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba(0, 0, 0, 0.3);
-  position: relative;
-  min-height: 400px;
-  max-height: 70vh;
+  min-height: 350px;
+  max-height: 60vh;
+  flex-grow: 1;
+}
+
+.portfolio-modal-gallery-section {
+  padding: 1rem;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .portfolio-modal-image img {
@@ -506,11 +519,13 @@
     overflow: auto;
   }
   
-  .portfolio-modal-image {
+  .portfolio-modal-image-wrapper {
     width: 100%;
-    height: auto;
-    min-height: 350px;
-    max-height: 50vh;
+  }
+  
+  .portfolio-modal-image {
+    min-height: 300px;
+    max-height: 45vh;
   }
   
   .portfolio-modal-details {
@@ -1086,5 +1101,119 @@
     color: #fff;
     border: 2px solid white;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  }
+}
+
+/* 圖片庫切換導航樣式 */
+.gallery-nav-title {
+  font-size: 1.2rem;
+  color: #fff;
+  margin: 0 0 0.8rem;
+  text-align: center;
+}
+
+.image-gallery-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-bottom: 0.5rem;
+  justify-content: center;
+}
+
+.image-option {
+  width: 70px;
+  height: 70px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  padding: 0;
+  background: none;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.image-option:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  border-color: var(--primary-color);
+}
+
+.image-option.active {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px var(--primary-color), 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.image-thumbnail {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+/* 響應式設計 - 圖片庫 */
+@media (max-width: 992px) {
+  .portfolio-modal-image-wrapper {
+    width: 100%;
+  }
+  
+  .portfolio-modal-image {
+    min-height: 300px;
+    max-height: 45vh;
+  }
+  
+  .image-option {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .gallery-nav-title {
+    font-size: 1.1rem;
+    margin: 0 0 0.6rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .image-option {
+    width: 55px;
+    height: 55px;
+  }
+  
+  .gallery-nav-title {
+    font-size: 1rem;
+  }
+  
+  .image-gallery-nav {
+    gap: 0.6rem;
+  }
+  
+  .portfolio-modal-gallery-section {
+    padding: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .portfolio-modal-image {
+    min-height: 250px;
+    max-height: 40vh;
+  }
+  
+  .image-option {
+    width: 48px;
+    height: 48px;
+  }
+  
+  .gallery-nav-title {
+    font-size: 0.9rem;
+    margin: 0 0 0.5rem;
+  }
+  
+  .image-gallery-nav {
+    gap: 0.4rem;
+    justify-content: center;
+  }
+  
+  .portfolio-modal-gallery-section {
+    padding: 0.6rem;
   }
 } 
