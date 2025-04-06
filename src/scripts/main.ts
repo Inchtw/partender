@@ -23,6 +23,20 @@ const counterElements = document.querySelectorAll('.counter-number');
 const testimonialItems = document.querySelectorAll('.testimonial-item');
 const yearElement = document.getElementById('currentYear') as HTMLElement;
 
+// 獲取登入按鈕但不初始化它
+const loginBtn = document.getElementById('loginBtn');
+if (loginBtn) {
+  loginBtn.style.display = 'none';
+  loginBtn.style.visibility = 'hidden';
+}
+
+// 獲取會員區塊並隱藏
+const memberSection = document.getElementById('member');
+if (memberSection) {
+  memberSection.style.display = 'none';
+  memberSection.style.visibility = 'hidden';
+}
+
 // 初始化函數
 async function init(): Promise<void> {
   // 預加載關鍵圖片
@@ -43,6 +57,8 @@ async function init(): Promise<void> {
   initGoogleAnalytics();
   try {
     await initFirebase();
+    // 註釋掉會員系統初始化
+    // await initAuth();
   } catch (error) {
     console.error('初始化服務失敗:', error);
     alert('初始化失敗：無法連接到服務，請稍後再試');

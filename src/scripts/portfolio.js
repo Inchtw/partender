@@ -762,7 +762,7 @@ function setupPortfolioModal() {
     
     // 頂部關閉按鈕
     const closeBtn = document.createElement('button');
-    closeBtn.className = 'portfolio-modal-close';
+    closeBtn.className = 'portfolio-modal-close top-close';
     closeBtn.innerHTML = '&times;';
     closeBtn.setAttribute('aria-label', '關閉');
     closeBtn.setAttribute('role', 'button');
