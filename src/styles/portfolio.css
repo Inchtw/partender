@@ -1,0 +1,1090 @@
+/* 作品展示樣式 */
+.portfolio-section {
+  background-color: var(--dark-bg);
+  position: relative;
+  overflow: hidden;
+  padding: 5rem 0;
+}
+
+.portfolio-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at bottom left, rgba(255, 107, 107, 0.1), transparent 60%);
+  z-index: 0;
+}
+
+.portfolio-section::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(78, 205, 196, 0.1) 0%, rgba(78, 205, 196, 0) 70%);
+  z-index: 0;
+}
+
+.portfolio-container {
+  position: relative;
+  z-index: 1;
+}
+
+.portfolio-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  width: 100%;
+}
+
+.portfolio-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #fff;
+  position: relative;
+  display: block;
+  text-align: center;
+  width: 100%;
+}
+
+.portfolio-title .highlight {
+  color: var(--primary-color);
+}
+
+.portfolio-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+}
+
+.portfolio-description {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* 分類標籤 */
+.portfolio-tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.portfolio-tab {
+  padding: 0.8rem 1.5rem;
+  background-color: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 2rem;
+  color: var(--text-light);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.portfolio-tab:hover {
+  background-color: rgba(255, 107, 107, 0.1);
+  border-color: var(--primary-color);
+}
+
+.portfolio-tab.active {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: #fff;
+}
+
+/* 作品網格 */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.portfolio-item {
+  position: relative;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  aspect-ratio: 1/1;
+}
+
+.portfolio-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+.portfolio-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.5s ease;
+}
+
+.portfolio-item:hover img {
+  transform: scale(1.05);
+}
+
+.portfolio-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 60%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1.5rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  box-sizing: border-box;
+}
+
+.portfolio-item:hover .portfolio-overlay {
+  opacity: 1;
+}
+
+.portfolio-item-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 0.5rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.portfolio-item-category {
+  font-size: 0.9rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.portfolio-item-link {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: var(--primary-color);
+  color: #fff;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+  margin-bottom: 0.5rem;
+  width: fit-content;
+}
+
+.portfolio-item-link:hover {
+  background-color: var(--secondary-color);
+}
+
+/* 作品特定樣式 */
+.works-item .portfolio-overlay {
+  background: linear-gradient(to top, rgba(255, 107, 107, 0.8) 0%, rgba(255, 107, 107, 0) 60%);
+}
+
+.works-item .portfolio-item-category {
+  color: #fff;
+}
+
+/* 活動紀錄特定樣式 */
+.activity-item .portfolio-overlay {
+  background: linear-gradient(to top, rgba(78, 205, 196, 0.8) 0%, rgba(78, 205, 196, 0) 60%);
+}
+
+.activity-item .portfolio-item-category {
+  color: #fff;
+}
+
+/* 查看更多按鈕 */
+.portfolio-more {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.portfolio-more-btn {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: #fff;
+  font-weight: 600;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  font-size: 1.1rem;
+}
+
+.portfolio-more-btn:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+}
+
+/* 分頁控制樣式 */
+.portfolio-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem auto;
+  gap: 1.5rem;
+}
+
+.pagination-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-light);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.pagination-btn:hover:not(:disabled) {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: #fff;
+}
+
+.pagination-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.page-indicator {
+  font-size: 0.9rem;
+  color: var(--text-light);
+  padding: 0.5rem 1rem;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 1rem;
+  min-width: 60px;
+  text-align: center;
+}
+
+/* 作品詳情彈出層 */
+.portfolio-modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+.portfolio-modal {
+  position: relative;
+  width: 90%;
+  max-width: 1200px;
+  background-color: var(--dark-bg-color);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.5);
+  display: none;
+  flex-direction: column;
+  max-height: 85vh;
+}
+
+.portfolio-modal-content {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.portfolio-modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s ease;
+  border: none;
+  outline: none;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+.portfolio-modal-close:hover {
+  background-color: var(--primary-color);
+  transform: scale(1.1);
+}
+
+.portfolio-modal-image {
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.3);
+  position: relative;
+  min-height: 400px;
+  max-height: 70vh;
+}
+
+.portfolio-modal-image img {
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  max-height: 100%;
+  max-width: 100%;
+  transition: transform 0.3s ease;
+  display: block;
+}
+
+/* 確保直式圖片正確顯示 */
+.portfolio-modal-image img[style*="object-position: center top"] {
+  max-height: 100%;
+  object-fit: contain;
+  width: auto;
+}
+
+.portfolio-modal-details {
+  width: 50%;
+  padding: 2rem;
+  color: #fff;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.portfolio-modal-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #fff;
+  line-height: 1.3;
+  word-break: break-word;
+}
+
+.portfolio-modal-category {
+  display: inline-block;
+  padding: 0.5rem 1.2rem;
+  background-color: var(--primary-color);
+  color: #fff;
+  border-radius: 2rem;
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+  align-self: flex-start;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.portfolio-modal-description {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+  word-break: break-word;
+  white-space: pre-line;
+}
+
+/* 作品相冊 */
+.portfolio-gallery {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.portfolio-gallery-item {
+  width: 100%;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.portfolio-gallery-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.portfolio-gallery-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  color: #fff;
+  font-size: 1rem;
+}
+
+/* 相冊導航 */
+.gallery-nav {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+  gap: 1rem;
+  visibility: hidden; /* 預設隱藏導航按鈕 */
+}
+
+/* 僅在模態窗口可見時顯示導航按鈕 */
+.portfolio-modal[style*="display: flex"] .gallery-nav,
+.portfolio-modal-container .gallery-nav {
+  visibility: visible;
+}
+
+.gallery-nav-btn {
+  padding: 0.8rem 1.5rem;
+  background-color: var(--primary-color);
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  min-width: 100px;
+  text-align: center;
+}
+
+.gallery-nav-btn:hover:not(:disabled) {
+  background-color: var(--secondary-color);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.gallery-nav-btn:disabled {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.5);
+  cursor: not-allowed;
+}
+
+/* 響應式設計 */
+@media (max-width: 992px) {
+  .portfolio-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .portfolio-title {
+    font-size: 2.2rem;
+  }
+  
+  .portfolio-modal-content {
+    flex-direction: column;
+    height: auto;
+    overflow: auto;
+  }
+  
+  .portfolio-modal-image {
+    width: 100%;
+    height: auto;
+    min-height: 350px;
+    max-height: 50vh;
+  }
+  
+  .portfolio-modal-details {
+    width: 100%;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .portfolio-modal-title {
+    font-size: 1.8rem;
+    margin-bottom: 0.8rem;
+  }
+  
+  .portfolio-modal-description {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .gallery-nav-btn {
+    min-width: 80px;
+    padding: 0.8rem 1.2rem;
+  }
+  
+  .portfolio-modal-image img {
+    max-height: 50vh;
+  }
+  
+  .portfolio-modal-close {
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.8rem;
+    background-color: rgba(0, 0, 0, 0.8);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5), 0 0 0 2px var(--primary-color);
+  }
+}
+
+@media (max-width: 768px) {
+  .portfolio-section {
+    padding: 4rem 0;
+  }
+  
+  .portfolio-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.2rem;
+  }
+  
+  .portfolio-title {
+    font-size: 2rem;
+  }
+  
+  .portfolio-description {
+    font-size: 1rem;
+  }
+  
+  .portfolio-tab {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+  
+  .portfolio-modal {
+    width: 95%;
+    max-height: 90vh;
+  }
+  
+  .portfolio-modal-image {
+    min-height: 300px;
+    max-height: 45vh;
+  }
+  
+  .portfolio-modal-title {
+    font-size: 1.5rem;
+    margin: 0.5rem 0;
+  }
+  
+  .portfolio-modal-description {
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+  }
+  
+  .portfolio-modal-close {
+    top: 0.8rem;
+    right: 0.8rem;
+    width: 2.8rem;
+    height: 2.8rem;
+    font-size: 1.7rem;
+    background-color: var(--primary-color);
+  }
+  
+  .gallery-nav-btn {
+    min-width: 70px;
+    padding: 0.7rem 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .portfolio-modal-image img {
+    max-height: 45vh;
+  }
+}
+
+@media (max-width: 480px) {
+  .portfolio-section {
+    padding: 3rem 0;
+  }
+  
+  .portfolio-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  
+  .portfolio-title {
+    font-size: 1.8rem;
+  }
+  
+  .portfolio-description {
+    font-size: 0.9rem;
+  }
+  
+  .portfolio-tab {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+  }
+  
+  .portfolio-item-title {
+    font-size: 1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .portfolio-item-category {
+    font-size: 0.8rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .portfolio-item-link {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+  }
+  
+  .portfolio-overlay {
+    padding: 1rem;
+  }
+  
+  .portfolio-modal-container {
+    padding: 1rem;
+  }
+  
+  .portfolio-modal {
+    width: 100%;
+    max-height: 95vh;
+  }
+  
+  .portfolio-modal-image {
+    min-height: 250px;
+    max-height: 40vh;
+  }
+  
+  .portfolio-modal-details {
+    padding: 1rem;
+  }
+  
+  .portfolio-modal-title {
+    font-size: 1.3rem;
+  }
+  
+  .portfolio-modal-category {
+    font-size: 0.7rem;
+    padding: 0.3rem 0.6rem;
+  }
+  
+  .portfolio-modal-description {
+    font-size: 0.9rem;
+    margin-bottom: 0.8rem;
+  }
+  
+  .portfolio-modal-close {
+    top: initial;
+    bottom: 1rem;
+    right: 1rem;
+    width: 40px;
+    height: 40px;
+    font-size: 1.8rem;
+    background-color: var(--primary-color);
+    color: #fff;
+    border: 2px solid white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    z-index: 100;
+    position: fixed;
+  }
+  
+  .gallery-nav {
+    margin-top: 1.2rem;
+  }
+  
+  .gallery-nav-btn {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+    min-width: 60px;
+  }
+  
+  .portfolio-more-btn {
+    padding: 0.7rem 1.4rem;
+    font-size: 0.9rem;
+  }
+  
+  .portfolio-modal-image img {
+    max-height: 40vh;
+  }
+  
+  /* 縮略圖模態窗口的關閉按鈕 */
+  .portfolio-thumbnails-content .portfolio-modal-close {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    bottom: initial;
+  }
+  
+  /* 確保模態內容有足夠底部邊距，不被固定的關閉按鈕遮擋 */
+  .portfolio-modal-details {
+    padding-bottom: 4rem;
+  }
+}
+
+/* 進一步的細節調整，確保關閉按鈕在所有設備上都易於使用 */
+@media (max-width: 380px) {
+  .portfolio-modal-close {
+    width: 45px;
+    height: 45px;
+    font-size: 2rem;
+  }
+}
+
+/* 作品縮略圖模態框 */
+.portfolio-thumbnails-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  opacity: 0;
+  visibility: hidden;
+  overflow-y: auto;
+  padding: 2rem 0;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.portfolio-thumbnails-modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.portfolio-thumbnails-content {
+  width: 90%;
+  max-width: 1200px;
+  background-color: var(--dark-bg);
+  border-radius: 1rem;
+  position: relative;
+  padding: 2rem;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+.portfolio-thumbnails-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: #fff;
+  text-align: center;
+}
+
+.portfolio-thumbnails-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+.portfolio-thumbnail {
+  position: relative;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  aspect-ratio: 1/1;
+  cursor: pointer;
+}
+
+.portfolio-thumbnail:hover {
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.portfolio-thumbnail.active {
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+  z-index: 5;
+}
+
+.portfolio-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.5s ease;
+}
+
+.portfolio-thumbnail:hover img,
+.portfolio-thumbnail.active img {
+  transform: scale(1.1);
+}
+
+.portfolio-thumbnail-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 70%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  box-sizing: border-box;
+}
+
+.portfolio-thumbnail:hover .portfolio-thumbnail-overlay,
+.portfolio-thumbnail.active .portfolio-thumbnail-overlay {
+  opacity: 1;
+}
+
+.portfolio-thumbnail-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 0.25rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.portfolio-thumbnail-category {
+  font-size: 0.9rem;
+  color: var(--primary-color);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 0.75rem;
+}
+
+/* 縮略圖查看詳情按鈕 */
+.portfolio-thumbnail-link {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: var(--primary-color);
+  color: #fff;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  text-decoration: none;
+  margin-top: 0.5rem;
+  align-self: flex-start;
+  text-align: center;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  z-index: 10;
+  position: relative;
+}
+
+.portfolio-thumbnail-link:hover {
+  background-color: var(--secondary-color);
+  transform: translateY(-2px);
+}
+
+/* 縮略圖顏色區分 */
+.portfolio-thumbnail[data-category="作品"] .portfolio-thumbnail-overlay {
+  background: linear-gradient(to top, rgba(255, 107, 107, 0.8) 0%, rgba(255, 107, 107, 0) 70%);
+}
+
+.portfolio-thumbnail[data-category="活動紀錄"] .portfolio-thumbnail-overlay {
+  background: linear-gradient(to top, rgba(78, 205, 196, 0.8) 0%, rgba(78, 205, 196, 0) 70%);
+}
+
+/* 響應式設計 - 縮略圖模態框 */
+@media (max-width: 992px) {
+  .portfolio-thumbnails-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.2rem;
+  }
+  
+  .portfolio-thumbnails-title {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .portfolio-thumbnails-content {
+    width: 95%;
+    padding: 1.5rem;
+  }
+  
+  .portfolio-thumbnails-grid {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1rem;
+  }
+  
+  .portfolio-thumbnails-title {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .portfolio-thumbnail-overlay {
+    padding: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .portfolio-thumbnails-modal {
+    padding: 1rem 0;
+  }
+  
+  .portfolio-thumbnails-content {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 0.5rem;
+  }
+  
+  .portfolio-thumbnails-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.8rem;
+  }
+  
+  .portfolio-thumbnails-title {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
+  
+  .portfolio-thumbnail-title {
+    font-size: 0.9rem;
+    margin-bottom: 0.1rem;
+  }
+  
+  .portfolio-thumbnail-category {
+    font-size: 0.8rem;
+    margin-bottom: 0.3rem;
+  }
+  
+  .portfolio-thumbnail-link {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+    margin-top: 0.3rem;
+    max-width: 90%;
+  }
+  
+  .portfolio-thumbnail-overlay {
+    padding: 0.6rem;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.3) 60%, rgba(0, 0, 0, 0) 100%);
+  }
+  
+  /* 改善在小屏幕上的作品详情模态框 */
+  .portfolio-modal-content {
+    width: 100%;
+    max-height: 95vh;
+    margin: 0.5rem 0;
+    border-radius: 0.5rem;
+  }
+  
+  .portfolio-modal-image {
+    height: 40vh;
+    max-height: 40vh;
+  }
+  
+  .portfolio-modal-image img {
+    max-height: 40vh;
+  }
+  
+  .portfolio-modal-details {
+    padding: 1rem;
+    max-height: 55vh;
+    overflow-y: auto;
+  }
+  
+  .portfolio-modal-title {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .portfolio-gallery-caption {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* 暢銷作品皇冠標記 */
+.portfolio-item-crown {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 30px;
+  height: 30px;
+  background-image: url('https://res.cloudinary.com/df4ru2dy3/image/upload/v1743939755/crown_ibcxnq.png');
+  background-size: cover;
+  background-position: center;
+  background-color: transparent;
+  z-index: 5;
+}
+
+.portfolio-thumbnail-crown {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 25px;
+  height: 25px;
+  background-image: url('https://res.cloudinary.com/df4ru2dy3/image/upload/v1743939755/crown_ibcxnq.png');
+  background-size: cover;
+  background-position: center;
+  background-color: transparent;
+  z-index: 5;
+}
+
+/* 響應式調整 - 皇冠圖標 */
+@media (max-width: 768px) {
+  .portfolio-item-crown {
+    width: 25px;
+    height: 25px;
+  }
+  
+  .portfolio-thumbnail-crown {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .portfolio-item-crown {
+    width: 20px;
+    height: 20px;
+    top: 5px;
+    left: 5px;
+  }
+  
+  .portfolio-thumbnail-crown {
+    width: 18px;
+    height: 18px;
+    top: 3px;
+    left: 3px;
+  }
+}
+
+/* 縮略圖模態框關閉按鈕加強 */
+.portfolio-thumbnails-content .portfolio-modal-close {
+  background-color: var(--primary-color);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+@media (max-width: 480px) {
+  .portfolio-thumbnails-content .portfolio-modal-close {
+    top: 0.5rem;
+    right: 0.5rem;
+    width: 35px;
+    height: 35px;
+    font-size: 1.5rem;
+    background-color: var(--primary-color);
+    color: #fff;
+    border: 2px solid white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  }
+} 

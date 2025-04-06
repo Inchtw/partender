@@ -73,7 +73,8 @@ module.exports = (env, argv) => {
             from: 'CNAME',
             to: '',
             noErrorOnMissing: true
-          }
+          },
+          { from: 'src/styles/portfolio.css', to: 'styles' },
         ],
       }),
     ],

@@ -6,6 +6,9 @@ import { initFirebase } from './services/firebase';
 import { setupHeroSlider } from './components/hero-slider';
 import { setupBackToTop } from './components/back-to-top';
 
+// 引入作品展示功能
+import './portfolio.js';
+
 // DOM 元素
 const navbarElement = document.getElementById('navbar');
 const navLinks = document.getElementById('navLinks');

@@ -46,9 +46,12 @@
   <!-- 樣式表 -->
   <link rel="stylesheet" href="styles/main.css">
   <link rel="stylesheet" href="styles/header.css">
-  <link rel="stylesheet" href="styles/gallery.css">
   <link rel="stylesheet" href="styles/sections.css">
+  <link rel="stylesheet" href="styles/portfolio.css">
+  <link rel="stylesheet" href="styles/testimonials.css">
+  <link rel="stylesheet" href="styles/gallery.css">
   <link rel="stylesheet" href="styles/lightbox.css">
+  <link rel="stylesheet" href="styles/alerts.css">
   <link rel="stylesheet" href="styles/member.css">
   
   <!-- 圖片加載失敗處理的通用腳本 -->
@@ -149,15 +152,12 @@
       </a>
       
       <ul id="navLinks" class="nav-links">
+        <li><a href="#home" class="nav-link">首頁</a></li>
         <li><a href="#about" class="nav-link">關於我們</a></li>
         <li><a href="#services" class="nav-link">服務項目</a></li>
-        <!-- 暫時隱藏作品展示導航項 -->
-        <!-- <li><a href="#gallery" class="nav-link">作品展示</a></li> -->
-        <!-- 暫時隱藏顧客評價導航項 -->
-        <!-- <li><a href="#testimonials" class="nav-link">顧客評價</a></li> -->
+        <li><a href="#portfolio" class="nav-link">作品展示</a></li>
         <li><a href="#contact" class="nav-link">聯絡我們</a></li>
-        <!-- 暫時隱藏會員登入按鈕 -->
-        <!-- <li><button id="loginBtn" class="nav-link login-btn">會員登入</button></li> -->
+        <li><a href="#" class="nav-link login-link">會員登入</a></li>
       </ul>
       
       <button onclick="document.getElementById('navLinks').classList.toggle('active'); this.classList.toggle('active');" id="mobileMenuBtn" class="mobile-menu-btn" aria-label="開啟選單">
@@ -170,8 +170,8 @@
   <section class="hero">
     <div class="hero-slider">
       <div class="hero-slider-container">
-        <div class="hero-slide active" style="background-image: url('https://res.cloudinary.com/df4ru2dy3/image/upload/v1741540017/DSC08452_o6d1ka.jpg');"></div>
-        <div class="hero-slide" style="background-image: url('https://res.cloudinary.com/df4ru2dy3/image/upload/o_80/v1741540009/IMG_6137_znem3u.jpg');"></div>
+        <div class="hero-slide active" style="background-image: url('https://res.cloudinary.com/df4ru2dy3/image/upload/f_auto/v1741540017/DSC08452_o6d1ka.jpg');"></div>
+        <div class="hero-slide" style="background-image: url('https://res.cloudinary.com/df4ru2dy3/image/upload/f_auto/o_80/v1741540009/IMG_6137_znem3u.jpg');"></div>
         <div class="hero-slide" style="background-image: url('https://res.cloudinary.com/df4ru2dy3/image/upload/f_auto/o_80/v1741540018/IMG_9191_rzogqk.heic');"></div>
         <div class="hero-slide" style="background-image: url('https://res.cloudinary.com/df4ru2dy3/image/upload/f_auto/o_80/v1741540021/IMG_9880_acefpp.heic');"></div>
         <div class="hero-slide" style="background-image: url('https://res.cloudinary.com/df4ru2dy3/image/upload/f_auto/v1741540024/DSC00674_f_bcnrpm.jpg');"></div>
@@ -254,67 +254,97 @@
     <div class="container">
       <h2>我們的 <span class="highlight">服務</span></h2>
       <div id="servicesContainer" class="services-container">
-        <!-- 服務項目將由 JavaScript 動態生成 -->
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-glass-martini-alt"></i>
+          </div>
+          <h3 class="service-title">預調雞尾酒</h3>
+          <p class="service-description">
+            我們提供專業的預調雞尾酒服務，為您的活動提前準備精美的雞尾酒，確保每一杯都完美呈現。
+          </p>
+          <a href="#portfolio" class="btn btn-sm btn-outline" onclick="document.querySelector('.portfolio-tab[data-filter=\'作品\']').click()">查看相關作品</a>
+        </div>
+        
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-glass-cheers"></i>
+          </div>
+          <h3 class="service-title">活動調酒服務</h3>
+          <p class="service-description">
+            我們的專業調酒師團隊可為各類活動提供現場調酒服務，包括企業活動、婚禮、生日派對等。
+          </p>
+          <a href="#portfolio" class="btn btn-sm btn-outline" onclick="document.querySelector('.portfolio-tab[data-filter=\'活動紀錄\']').click()">查看相關作品</a>
+        </div>
+        
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-user-tie"></i>
+          </div>
+          <h3 class="service-title">專業調酒師</h3>
+          <p class="service-description">
+            我們擁有經驗豐富的專業調酒師，能夠根據您的需求定制獨特的雞尾酒菜單，為您的活動增添亮點。
+          </p>
+          <a href="#contact" class="btn btn-sm btn-outline">聯絡我們</a>
+        </div>
+        
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-cocktail"></i>
+          </div>
+          <h3 class="service-title">調酒課程</h3>
+          <p class="service-description">
+            我們提供專業的調酒課程，無論您是初學者還是有經驗的調酒愛好者，都能在我們的課程中學到新技能。
+          </p>
+          <a href="#contact" class="btn btn-sm btn-outline">了解更多</a>
+        </div>
+        
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-store"></i>
+          </div>
+          <h3 class="service-title">吧台設計</h3>
+          <p class="service-description">
+            我們提供專業的活動吧台設計和搭建服務，為您的活動打造獨特而吸引人的調酒吧台。
+          </p>
+          <a href="#contact" class="btn btn-sm btn-outline">聯絡我們</a>
+        </div>
+        
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-wine-bottle"></i>
+          </div>
+          <h3 class="service-title">酒水供應</h3>
+          <p class="service-description">
+            我們提供高品質的酒水供應服務，包括各類烈酒、葡萄酒、啤酒等，滿足您活動的各種需求。
+          </p>
+          <a href="#contact" class="btn btn-sm btn-outline">了解更多</a>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- 作品展示 - 暫時隱藏 -->
-  <section id="gallery" class="gallery" style="display: none;">
-    <div class="container">
-      <h2>精選 <span class="highlight">作品</span></h2>
-      <div id="galleryContainer" class="gallery-container">
-        <!-- 畫廊項目將由 JavaScript 動態生成 -->
-        <div class="gallery-item" data-category="特調">
-          <img 
-            src="assets/images/gallery/cocktail1.jpg" 
-            alt="莓果特調" 
-            loading="lazy"
-            data-original-src="assets/images/gallery/cocktail1.jpg"
-            onerror="handleImageError(this)"
-          >
-          <div class="gallery-overlay">
-            <h3 class="gallery-title">莓果特調</h3>
-            <p class="gallery-description">新鮮莓果與琴酒的完美結合，酸甜可口</p>
-          </div>
-          <div class="gallery-icon">
-            <i class="fas fa-search-plus"></i>
-          </div>
-        </div>
-        
-        <div class="gallery-item" data-category="派對">
-          <img 
-            src="assets/images/gallery/party1.jpg" 
-            alt="生日派對" 
-            loading="lazy"
-            data-original-src="assets/images/gallery/party1.jpg"
-            onerror="handleImageError(this)"
-          >
-          <div class="gallery-overlay">
-            <h3 class="gallery-title">生日派對</h3>
-            <p class="gallery-description">為客戶打造的生日派對調酒吧台</p>
-          </div>
-          <div class="gallery-icon">
-            <i class="fas fa-search-plus"></i>
-          </div>
-        </div>
-        
-        <div class="gallery-item" data-category="特調">
-          <img 
-            src="assets/images/gallery/cocktail2.jpg" 
-            alt="熱帶風情" 
-            loading="lazy"
-            data-original-src="assets/images/gallery/cocktail2.jpg"
-            onerror="handleImageError(this)"
-          >
-          <div class="gallery-overlay">
-            <h3 class="gallery-title">熱帶風情</h3>
-            <p class="gallery-description">朗姆為基底，帶有熱帶水果風味</p>
-          </div>
-          <div class="gallery-icon">
-            <i class="fas fa-search-plus"></i>
-          </div>
-        </div>
+  <!-- 作品展示 -->
+  <section id="portfolio" class="portfolio-section">
+    <div class="container portfolio-container">
+      <div class="portfolio-header">
+        <h2 class="portfolio-title">作品與 <span class="highlight">活動紀錄</span></h2>
+        <p class="portfolio-description">
+          探索我們精心調製的雞尾酒作品和成功舉辦的活動紀錄，每一個作品都代表著我們對品質和創意的堅持。
+        </p>
+      </div>
+      
+      <div class="portfolio-tabs">
+        <div class="portfolio-tab active" data-filter="all">全部</div>
+        <div class="portfolio-tab" data-filter="作品">作品</div>
+        <div class="portfolio-tab" data-filter="活動紀錄">活動紀錄</div>
+      </div>
+      
+      <div class="portfolio-grid">
+        <!-- 作品項目將由JavaScript動態生成 -->
+      </div>
+      
+      <div class="portfolio-more">
+        <a href="#" class="portfolio-more-btn">查看更多</a>
       </div>
     </div>
   </section>
@@ -488,7 +518,37 @@
     </div>
   </footer>
 
-  <!-- JavaScript -->
-  <script src="main.js"></script>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TRSMFVDM" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  
+  <!-- 作品詳情彈出層 -->
+  <div class="portfolio-modal" id="portfolioModal" style="display: none;">
+    <div class="portfolio-modal-content">
+      <div class="portfolio-modal-close" id="portfolioModalClose">&times;</div>
+      <div class="portfolio-modal-image">
+        <img src="" alt="" id="portfolioModalImage">
+      </div>
+      <div class="portfolio-modal-details">
+        <h2 class="portfolio-modal-title" id="portfolioModalTitle"></h2>
+        <span class="portfolio-modal-category" id="portfolioModalCategory"></span>
+        <p class="portfolio-modal-description" id="portfolioModalDescription"></p>
+        
+        <div class="portfolio-gallery" id="portfolioGallery">
+          <!-- 相冊圖片將由JavaScript動態添加 -->
+        </div>
+        
+        <div class="gallery-nav">
+          <button class="gallery-nav-btn" id="prevGalleryBtn" disabled>上一張</button>
+          <button class="gallery-nav-btn" id="nextGalleryBtn">下一張</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js" integrity="sha512-xgIrH5DRuEOcZK8cprBOcFcF0xBmhG/KbI5tQYmXcZLz1ood9iu7H7HDFVTpac7zsVQH2biOKE/z6vbkgLjfBQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="./dist/main.js"></script>
+  
+  <iframe name="hidden_iframe" id="hidden_iframe" style="display: none;"></iframe>
 </body>
 </html> 
