@@ -289,13 +289,13 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
-  z-index: 999;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 1001;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow-y: auto;
-  padding: 2rem;
+  padding: 4rem 2rem 2rem 2rem;
   box-sizing: border-box;
 }
 
@@ -303,13 +303,14 @@
   position: relative;
   width: 90%;
   max-width: 1200px;
-  background-color: var(--dark-bg-color);
+  background-color: rgba(23, 23, 43, 0.7);
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 5px 30px rgba(0, 0, 0, 0.5);
   display: none;
   flex-direction: column;
   max-height: 85vh;
+  margin-top: calc(var(--header-height) / 2);
 }
 
 .portfolio-modal-content {
@@ -411,7 +412,7 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: transparent;
   position: relative;
 }
 
@@ -423,12 +424,12 @@
   min-height: 350px;
   max-height: 60vh;
   flex-grow: 1;
-  padding: 1rem;
+  padding: 0.5rem;
   box-sizing: border-box;
 }
 
 .portfolio-modal-gallery-section {
-  padding: 1rem;
+  padding: 0.75rem;
   background-color: rgba(0, 0, 0, 0.2);
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   position: relative;
@@ -440,15 +441,15 @@
   width: auto;
   height: auto;
   object-fit: contain;
-  max-height: 90%;
-  max-width: 90%;
+  max-height: 95%;
+  max-width: 95%;
   transition: transform 0.3s ease;
   display: block;
 }
 
 /* 確保直式圖片正確顯示 */
 .portfolio-modal-image img[style*="object-position: center center"] {
-  max-height: 90%;
+  max-height: 95%;
   object-fit: contain;
   width: auto;
 }
@@ -650,14 +651,29 @@
     font-size: 0.9rem;
   }
   
+  .portfolio-modal-container {
+    padding: 4.5rem 1rem 1rem 1rem;
+  }
+  
   .portfolio-modal {
     width: 95%;
     max-height: 90vh;
+    margin-top: calc(var(--header-height) / 1.5);
+  }
+  
+  .portfolio-modal-content {
+    flex-direction: column;
+    height: auto;
+    overflow: auto;
+  }
+  
+  .portfolio-modal-image-wrapper {
+    width: 100%;
   }
   
   .portfolio-modal-image {
-    min-height: 300px;
-    max-height: 45vh;
+    min-height: 350px;
+    max-height: 50vh;
   }
   
   .portfolio-modal-title {
@@ -734,21 +750,41 @@
   }
   
   .portfolio-modal-container {
-    padding: 1rem;
+    padding: 5rem 0 0.5rem 0;
   }
   
   .portfolio-modal {
     width: 100%;
     max-height: 95vh;
+    margin-top: var(--header-height);
+    border-radius: 0;
+  }
+  
+  .portfolio-modal-content {
+    flex-direction: column;
+    padding: 0;
+  }
+  
+  .portfolio-modal-image-wrapper {
+    width: 100%;
+    max-height: 55vh;
+    background-color: transparent;
   }
   
   .portfolio-modal-image {
-    min-height: 250px;
-    max-height: 40vh;
+    min-height: 280px;
+    height: 50vh;
+    max-height: 55vh;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   
   .portfolio-modal-details {
     padding: 1rem;
+    max-height: 45vh;
+    overflow-y: auto;
   }
   
   .portfolio-modal-title {
@@ -756,13 +792,15 @@
   }
   
   .portfolio-modal-category {
-    font-size: 0.7rem;
-    padding: 0.3rem 0.6rem;
+    font-size: 0.65rem;
+    padding: 0.25rem 0.5rem;
+    margin-bottom: 1rem;
   }
   
   .portfolio-modal-description {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     margin-bottom: 0.8rem;
+    line-height: 1.6;
   }
   
   .portfolio-modal-close,
@@ -838,14 +876,38 @@
     padding: 0.5rem;
   }
   
-  .portfolio-modal-image img,
+  .portfolio-modal-image img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    margin: 0 auto;
+  }
+  
+  /* 針對直式圖片的特別處理 */
   .portfolio-modal-image img[style*="object-position: center center"] {
-    max-height: 85%;
-    max-width: 85%;
+    max-height: 100%;
+    max-width: 98%;
+    object-fit: contain;
   }
   
   .portfolio-thumbnails-content {
     padding: 1.5rem 1rem 7rem 1rem;
+  }
+  
+  /* 改進底部導航區域 */
+  .portfolio-modal-gallery-section {
+    padding: 0.4rem;
+    margin-bottom: 40px;
+  }
+  
+  .image-gallery-nav {
+    gap: 0.25rem;
+  }
+  
+  .image-option {
+    width: 40px;
+    height: 40px;
+    border-width: 1px;
   }
 }
 
@@ -1131,18 +1193,33 @@
   
   .portfolio-modal-details {
     padding: 1rem;
-    max-height: 55vh;
-    overflow-y: auto;
+    max-height: 45vh;
   }
   
   .portfolio-modal-title {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     margin-bottom: 0.5rem;
   }
   
   .portfolio-gallery-caption {
     margin-top: 0.5rem;
     font-size: 0.9rem;
+  }
+  
+  /* 改進底部導航區域 */
+  .portfolio-modal-gallery-section {
+    padding: 0.4rem;
+    margin-bottom: 40px;
+  }
+  
+  .image-gallery-nav {
+    gap: 0.25rem;
+  }
+  
+  .image-option {
+    width: 40px;
+    height: 40px;
+    border-width: 1px;
   }
 }
 
@@ -1367,11 +1444,41 @@
   }
   
   .image-gallery-nav {
-    gap: 0.4rem;
+    gap: 0.25rem;
     justify-content: center;
   }
   
   .portfolio-modal-gallery-section {
-    padding: 0.6rem;
+    padding: 0.4rem;
+    margin-bottom: 40px;
+  }
+  
+  .image-gallery-nav {
+    gap: 0.25rem;
+  }
+  
+  .image-option {
+    width: 40px;
+    height: 40px;
+    border-width: 1px;
+  }
+}
+
+@media (max-width: 480px) {
+  .portfolio-modal-container {
+    padding: 5rem 0 0.5rem 0;
+  }
+  
+  .portfolio-modal-image {
+    padding: 0;
+  }
+  
+  .portfolio-modal-image img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+  
+  .portfolio-modal-image img[style*="object-position: center center"] {
+    max-width: 98%;
   }
 } 
