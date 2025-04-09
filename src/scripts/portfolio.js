@@ -786,6 +786,14 @@ function setupPortfolioModal() {
     document.body.appendChild(modalContainer);
     document.body.style.overflow = 'hidden'; // 阻止背景滾動
     
+    // 確保彈窗顯示在可視區域
+    setTimeout(() => {
+      modalContainer.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }, 50);
+    
     // 事件監聽器
     closeBtn.addEventListener('click', () => {
       modalContainer.remove();
