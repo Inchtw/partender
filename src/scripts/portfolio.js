@@ -283,10 +283,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const img = document.createElement('img');
     img.src = item.mainImage;
     img.alt = item.title;
+    img.style.border = 'none';
+    img.style.boxShadow = 'none';
+    img.style.backgroundColor = 'transparent';
     img.onload = function() {
       // 檢查圖片是否為直式（高度大於寬度）
       if (this.naturalHeight > this.naturalWidth) {
-        this.style.objectPosition = 'center top';
+        this.style.objectPosition = 'center center';
         console.log('直式圖片已檢測到：', item.title, this.naturalWidth, 'x', this.naturalHeight);
       }
     };
@@ -463,6 +466,9 @@ document.addEventListener('DOMContentLoaded', function() {
       const img = document.createElement('img');
       img.src = item.mainImage;
       img.alt = item.title;
+      img.style.border = 'none';
+      img.style.boxShadow = 'none';
+      img.style.backgroundColor = 'transparent';
       
       // 確保圖片加載完成後處理直式圖片的顯示
       img.onload = function() {
@@ -613,6 +619,9 @@ function setupPortfolioModal() {
     const image = document.createElement('img');
     image.src = item.mainImage;
     image.alt = item.title;
+    image.style.border = 'none';
+    image.style.boxShadow = 'none';
+    image.style.backgroundColor = 'transparent';
     image.onload = function() {
       // 檢查圖片是否為直式（高度大於寬度）
       if (this.naturalHeight > this.naturalWidth) {
