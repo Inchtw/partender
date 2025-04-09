@@ -414,6 +414,8 @@
   overflow: hidden;
   background-color: transparent;
   position: relative;
+  border: none;
+  box-shadow: none;
 }
 
 .portfolio-modal-image {
@@ -426,6 +428,10 @@
   flex-grow: 1;
   padding: 0.5rem;
   box-sizing: border-box;
+  background-color: transparent;
+  overflow: hidden;
+  border: none;
+  box-shadow: none;
 }
 
 .portfolio-modal-gallery-section {
@@ -445,6 +451,9 @@
   max-width: 95%;
   transition: transform 0.3s ease;
   display: block;
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
 }
 
 /* 確保直式圖片正確顯示 */
@@ -779,6 +788,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
   }
   
   .portfolio-modal-details {
@@ -881,6 +893,8 @@
     max-height: 100%;
     object-fit: contain;
     margin: 0 auto;
+    border: none;
+    box-shadow: none;
   }
   
   /* 針對直式圖片的特別處理 */
