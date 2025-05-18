@@ -53,6 +53,9 @@ async function init(): Promise<void> {
   // 設置回到頂部按鈕
   setupBackToTop();
   
+  // 初始化 Instagram 詢問按鈕
+  initializeIgInquiryButton();
+  
   // 初始化第三方服務
   initGoogleAnalytics();
   try {
@@ -421,4 +424,36 @@ export {
   renderServiceItems,
   renderGalleryItems,
   showLightbox
-}; 
+};
+
+/**
+ * 初始化 Instagram 詢問按鈕功能
+ */
+function initializeIgInquiryButton() {
+  const igBtn = document.getElementById('igInquiryBtn');
+  if (!igBtn) return;
+  
+  // 每 10 秒抖動一次按鈕以吸引注意
+  setInterval(() => {
+    igBtn.classList.add('shake');
+    igBtn.classList.add('glow');
+    
+    // 3 秒後移除抖動效果
+    setTimeout(() => {
+      igBtn.classList.remove('shake');
+      igBtn.classList.remove('glow');
+    }, 3000);
+  }, 10000);
+  
+  // 頁面加載後 3 秒開始第一次抖動
+  setTimeout(() => {
+    igBtn.classList.add('shake');
+    igBtn.classList.add('glow');
+    
+    // 3 秒後移除抖動效果
+    setTimeout(() => {
+      igBtn.classList.remove('shake');
+      igBtn.classList.remove('glow');
+    }, 3000);
+  }, 3000);
+} 
