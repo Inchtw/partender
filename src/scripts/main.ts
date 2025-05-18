@@ -456,4 +456,37 @@ function initializeIgInquiryButton() {
       igBtn.classList.remove('glow');
     }, 3000);
   }, 3000);
+  
+  // 跟踪上一次看到的區塊
+  let lastVisibleSection = '';
+  
+  // 監聽滾動事件，在滾動到新的區塊時觸發抖動
+  window.addEventListener('scroll', () => {
+    const sections = ['home', 'about', 'services', 'portfolio', 'contact'];
+    
+    // 找出當前在視圖中的區塊
+    for (const sectionId of sections) {
+      const section = document.getElementById(sectionId) || document.querySelector(`.${sectionId}`);
+      if (!section) continue;
+      
+      const rect = section.getBoundingClientRect();
+      const isVisible = rect.top < window.innerHeight * 0.6 && rect.bottom > 0;
+      
+      // 如果找到一個新的可見區塊，就觸發抖動效果
+      if (isVisible && lastVisibleSection !== sectionId) {
+        lastVisibleSection = sectionId;
+        
+        // 避免頻繁抖動，加入簡單節流
+        igBtn.classList.add('shake');
+        igBtn.classList.add('glow');
+        
+        setTimeout(() => {
+          igBtn.classList.remove('shake');
+          igBtn.classList.remove('glow');
+        }, 2000);
+        
+        break;
+      }
+    }
+  });
 } 
