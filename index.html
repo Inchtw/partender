@@ -7,9 +7,47 @@
   <title>Partender | 派對調酒專家</title>
   
   <!-- Favicon -->
-  <link rel="icon" href="https://res.cloudinary.com/df4ru2dy3/image/upload/v1741523209/logo-white_hw3odm.png" type="image/png">
-  <link rel="shortcut icon" href="https://res.cloudinary.com/df4ru2dy3/image/upload/v1741523209/logo-white_hw3odm.png" type="image/png">
-  <link rel="apple-touch-icon" href="https://res.cloudinary.com/df4ru2dy3/image/upload/v1741523209/logo-white_hw3odm.png">
+  <!-- 預設 favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="https://res.cloudinary.com/df4ru2dy3/image/upload/c_scale,w_32,h_32/v1747575799/logo-f_ztextq.png" id="favicon32">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://res.cloudinary.com/df4ru2dy3/image/upload/c_scale,w_16,h_16/v1747575799/logo-f_ztextq.png" id="favicon16">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://res.cloudinary.com/df4ru2dy3/image/upload/c_scale,w_180,h_180/v1747575799/logo-f_ztextq.png" id="appleTouchIcon">
+  
+  <!-- 動態 favicon 腳本 -->
+  <script>
+    // 設置深淺色模式的 favicon
+    function setFavicons(isDarkMode) {
+      const favicon32 = document.getElementById('favicon32');
+      const favicon16 = document.getElementById('favicon16');
+      const appleTouchIcon = document.getElementById('appleTouchIcon');
+      
+      if (isDarkMode) {
+        // 深色模式使用白色 logo
+        favicon32.href = 'https://res.cloudinary.com/df4ru2dy3/image/upload/c_scale,w_32,h_32/v1741523209/logo-white_hw3odm.png';
+        favicon16.href = 'https://res.cloudinary.com/df4ru2dy3/image/upload/c_scale,w_16,h_16/v1741523209/logo-white_hw3odm.png';
+        appleTouchIcon.href = 'https://res.cloudinary.com/df4ru2dy3/image/upload/c_scale,w_180,h_180/v1741523209/logo-white_hw3odm.png';
+      } else {
+        // 淺色模式使用彩色 logo
+        favicon32.href = 'https://res.cloudinary.com/df4ru2dy3/image/upload/c_scale,w_32,h_32/v1747575799/logo-f_ztextq.png';
+        favicon16.href = 'https://res.cloudinary.com/df4ru2dy3/image/upload/c_scale,w_16,h_16/v1747575799/logo-f_ztextq.png';
+        appleTouchIcon.href = 'https://res.cloudinary.com/df4ru2dy3/image/upload/c_scale,w_180,h_180/v1747575799/logo-f_ztextq.png';
+      }
+    }
+    
+    // 在頁面加載時檢查當前模式
+    document.addEventListener('DOMContentLoaded', function() {
+      const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      setFavicons(isDarkMode);
+      
+      // 監聽系統色彩模式變化
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+        setFavicons(e.matches);
+      });
+    });
+  </script>
+  
+  <!-- 瀏覽器主題顏色 -->
+  <meta name="theme-color" content="#1a1a2e" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
   
   <!-- SEO 元標籤 -->
   <meta name="description" content="Partender 是由台大畢業生組成的專業派對調酒團隊，專攻酸甜派對調酒，承接生日、婚禮等派對活動，顛覆傳統派對酒難喝印象。">
@@ -21,16 +59,16 @@
   <meta property="og:url" content="https://inchtw.github.io/partender/">
   <meta property="og:title" content="Partender | 派對調酒專家">
   <meta property="og:description" content="由台大畢業生組成的專業派對調酒團隊，專攻酸甜派對調酒，顛覆傳統派對酒難喝印象。">
-  <meta property="og:image" content="https://res.cloudinary.com/df4ru2dy3/image/upload/v1741544998/logo-f-cen_cesomi.png">
+  <meta property="og:image" content="https://res.cloudinary.com/df4ru2dy3/image/upload/c_crop,ar_1:1/l_image:upload:logo-all-white_yncsgj/c_scale,fl_relative,w_0.55/o_90/fl_layer_apply,g_center,x_0.03,y_0.04/v1747575543/C3EF06C0-3B8C-44CC-AC06-061A67677E90_xv69cc.png">
   <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
+  <meta property="og:image:height" content="1200">
   
   <!-- Twitter -->
-  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:card" content="summary">
   <meta property="twitter:url" content="https://inchtw.github.io/partender/">
   <meta property="twitter:title" content="Partender | 派對調酒專家">
   <meta property="twitter:description" content="由台大畢業生組成的專業派對調酒團隊，專攻酸甜派對調酒，顛覆傳統派對酒難喝印象。">
-  <meta property="twitter:image" content="https://res.cloudinary.com/df4ru2dy3/image/upload/v1741544998/logo-f-cen_cesomi.png">
+  <meta property="twitter:image" content="https://res.cloudinary.com/df4ru2dy3/image/upload/c_crop,ar_1:1/l_image:upload:logo-all-white_yncsgj/c_scale,fl_relative,w_0.55/o_90/fl_layer_apply,g_center,x_0.03,y_0.04/v1747575543/C3EF06C0-3B8C-44CC-AC06-061A67677E90_xv69cc.png">
   
   <!-- 字體和圖標 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
