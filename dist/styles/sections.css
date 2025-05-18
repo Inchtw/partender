@@ -1118,4 +1118,148 @@
 section {
   padding: 4rem 0;
   position: relative;
+}
+
+/* 響應式樣式 - 手機版上的區塊瘦身 */
+@media (max-width: 768px) {
+  section {
+    padding: 40px 0;
+  }
+  
+  .hero {
+    min-height: 500px;
+  }
+  
+  .counter-section {
+    padding: 10px 0;
+  }
+  
+  .about {
+    padding: 40px 0 !important;
+  }
+  
+  .about-container {
+    gap: 20px !important;
+  }
+  
+  .about-image {
+    height: 300px !important;
+  }
+  
+  .about-title {
+    font-size: 24px !important;
+    margin-bottom: 15px !important;
+  }
+  
+  .about-text {
+    margin-bottom: 10px !important;
+    line-height: 1.6 !important;
+  }
+  
+  .services {
+    padding: 40px 0;
+  }
+  
+  .service-card {
+    padding: 20px;
+    margin-bottom: 15px;
+  }
+  
+  .portfolio-section {
+    padding: 40px 0;
+  }
+  
+  .portfolio-header {
+    margin-bottom: 20px;
+  }
+  
+  .portfolio-description {
+    margin-bottom: 15px;
+  }
+  
+  .portfolio-tabs {
+    margin-bottom: 15px;
+  }
+  
+  .portfolio-grid {
+    gap: 15px;
+  }
+  
+  .portfolio-item {
+    margin-bottom: 15px;
+  }
+  
+  .contact {
+    padding: 40px 0;
+  }
+  
+  .contact-container {
+    gap: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+}
+
+/* 更小的移動設備進一步瘦身 */
+@media (max-width: 480px) {
+  section {
+    padding: 30px 0;
+  }
+  
+  .hero {
+    min-height: 450px;
+  }
+  
+  .counter-section {
+    padding: 8px 0;
+  }
+  
+  .counter-container {
+    padding: 0;
+  }
+  
+  .counter-item {
+    padding: 8px;
+    margin-bottom: 8px;
+  }
+  
+  .about {
+    padding: 30px 0 !important;
+  }
+  
+  .about-image {
+    height: 250px !important;
+  }
+  
+  .about-title {
+    font-size: 22px !important;
+    margin-bottom: 12px !important;
+  }
+  
+  .service-card {
+    padding: 15px;
+    margin-bottom: 12px;
+  }
+  
+  .services-container {
+    gap: 12px;
+  }
+  
+  .services {
+    padding: 30px 0;
+  }
+  
+  .portfolio-section {
+    padding: 30px 0;
+  }
+  
+  .portfolio-grid {
+    gap: 10px;
+  }
+  
+  .contact {
+    padding: 30px 0;
+  }
 } 
