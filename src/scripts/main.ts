@@ -433,63 +433,30 @@ export {
  * 初始化 Instagram 詢問按鈕功能
  */
 function initializeIgInquiryButton() {
-  const igBtn = document.getElementById('igInquiryBtn');
-  if (!igBtn) return;
+  const igInquiryBtn = document.getElementById('igInquiryBtn');
+  if (!igInquiryBtn) return;
   
-  // 每 10 秒抖動一次按鈕以吸引注意
-  setInterval(() => {
-    igBtn.classList.add('shake');
-    igBtn.classList.add('glow');
-    
-    // 3 秒後移除抖動效果
+  // 添加抖動和發光效果
+  const addShakeEffect = () => {
+    igInquiryBtn.classList.add('shake');
     setTimeout(() => {
-      igBtn.classList.remove('shake');
-      igBtn.classList.remove('glow');
-    }, 3000);
-  }, 10000);
+      igInquiryBtn.classList.remove('shake');
+    }, 1000);
+  };
   
-  // 頁面加載後 3 秒開始第一次抖動
-  setTimeout(() => {
-    igBtn.classList.add('shake');
-    igBtn.classList.add('glow');
+  // 每30秒抖動一次
+  setInterval(addShakeEffect, 30000);
+  
+  // 初始抖動（延遲5秒後開始）
+  setTimeout(addShakeEffect, 5000);
+  
+  // 添加點擊事件，顯示確認提示
+  igInquiryBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    const url = this.getAttribute('href');
     
-    // 3 秒後移除抖動效果
-    setTimeout(() => {
-      igBtn.classList.remove('shake');
-      igBtn.classList.remove('glow');
-    }, 3000);
-  }, 3000);
-  
-  // 跟踪上一次看到的區塊
-  let lastVisibleSection = '';
-  
-  // 監聽滾動事件，在滾動到新的區塊時觸發抖動
-  window.addEventListener('scroll', () => {
-    const sections = ['home', 'about', 'services', 'portfolio', 'contact'];
-    
-    // 找出當前在視圖中的區塊
-    for (const sectionId of sections) {
-      const section = document.getElementById(sectionId) || document.querySelector(`.${sectionId}`);
-      if (!section) continue;
-      
-      const rect = section.getBoundingClientRect();
-      const isVisible = rect.top < window.innerHeight * 0.6 && rect.bottom > 0;
-      
-      // 如果找到一個新的可見區塊，就觸發抖動效果
-      if (isVisible && lastVisibleSection !== sectionId) {
-        lastVisibleSection = sectionId;
-        
-        // 避免頻繁抖動，加入簡單節流
-        igBtn.classList.add('shake');
-        igBtn.classList.add('glow');
-        
-        setTimeout(() => {
-          igBtn.classList.remove('shake');
-          igBtn.classList.remove('glow');
-        }, 2000);
-        
-        break;
-      }
+    if (url && confirm('前往 IG 與我們聯繫？')) {
+      window.open(url, '_blank');
     }
   });
 }
