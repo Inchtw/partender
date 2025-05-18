@@ -434,7 +434,11 @@ export {
  */
 function initializeIgInquiryButton() {
   const igInquiryBtn = document.getElementById('igInquiryBtn');
-  if (!igInquiryBtn) return;
+  const igConfirmModal = document.getElementById('igConfirmModal');
+  const igConfirmBtn = document.getElementById('igConfirmBtn');
+  const igCancelBtn = document.getElementById('igCancelBtn');
+  
+  if (!igInquiryBtn || !igConfirmModal || !igConfirmBtn || !igCancelBtn) return;
   
   // 添加抖動和發光效果
   const addShakeEffect = () => {
@@ -450,13 +454,58 @@ function initializeIgInquiryButton() {
   // 初始抖動（延遲5秒後開始）
   setTimeout(addShakeEffect, 5000);
   
-  // 添加點擊事件，顯示確認提示
+  // 儲存目標 URL
+  let targetUrl = '';
+  
+  // 添加點擊事件，顯示自定義確認提示
   igInquiryBtn.addEventListener('click', function(e) {
     e.preventDefault();
-    const url = this.getAttribute('href');
+    targetUrl = this.getAttribute('href') || '';
     
-    if (url && confirm('前往 IG 與我們聯繫？')) {
-      window.open(url, '_blank');
+    if (targetUrl) {
+      // 顯示自定義確認對話框
+      igConfirmModal.style.display = 'flex';
+      // 使用 setTimeout 確保 display:flex 應用後再添加 show 類
+      setTimeout(() => {
+        igConfirmModal.classList.add('show');
+      }, 10);
+      document.body.style.overflow = 'hidden'; // 防止頁面滾動
+      
+      // 追蹤事件
+      trackEvent('contact', 'click_instagram_button');
+    }
+  });
+  
+  // 封裝關閉對話框的邏輯
+  const closeModal = () => {
+    igConfirmModal.classList.remove('show');
+    // 等待過渡動畫完成後再隱藏對話框
+    setTimeout(() => {
+      igConfirmModal.style.display = 'none';
+      document.body.style.overflow = ''; // 恢復頁面滾動
+    }, 300);
+  };
+  
+  // 確認按鈕點擊事件
+  igConfirmBtn.addEventListener('click', () => {
+    if (targetUrl) {
+      window.open(targetUrl, '_blank');
+      trackEvent('contact', 'confirm_instagram_redirect');
+    }
+    closeModal();
+  });
+  
+  // 取消按鈕點擊事件
+  igCancelBtn.addEventListener('click', () => {
+    closeModal();
+    trackEvent('contact', 'cancel_instagram_redirect');
+  });
+  
+  // 點擊背景關閉
+  igConfirmModal.addEventListener('click', (e) => {
+    if (e.target === igConfirmModal) {
+      closeModal();
+      trackEvent('contact', 'cancel_instagram_redirect');
     }
   });
 }
