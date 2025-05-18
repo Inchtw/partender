@@ -56,6 +56,9 @@ async function init(): Promise<void> {
   // 初始化 Instagram 詢問按鈕
   initializeIgInquiryButton();
   
+  // 初始化關於我們圖片輪播
+  initializeAboutSlider();
+  
   // 初始化第三方服務
   initGoogleAnalytics();
   try {
@@ -489,4 +492,66 @@ function initializeIgInquiryButton() {
       }
     }
   });
+}
+
+/**
+ * 初始化關於我們區塊的圖片輪播
+ */
+function initializeAboutSlider() {
+  const slides = document.querySelectorAll('.about-slide');
+  const dots = document.querySelectorAll('.about-slider-dot');
+  if (!slides.length || !dots.length) return;
+  
+  let currentSlide = 0;
+  let slideInterval: number;
+  
+  // 顯示特定幻燈片
+  const showSlide = (index: number) => {
+    // 移除所有幻燈片的顯示狀態
+    slides.forEach(slide => {
+      (slide as HTMLElement).style.opacity = '0';
+    });
+    
+    // 移除所有指示點的激活狀態
+    dots.forEach(dot => {
+      dot.classList.remove('active');
+      (dot as HTMLElement).style.backgroundColor = 'rgba(255,255,255,0.5)';
+    });
+    
+    // 顯示目前幻燈片並激活對應指示點
+    (slides[index] as HTMLElement).style.opacity = '1';
+    dots[index].classList.add('active');
+    (dots[index] as HTMLElement).style.backgroundColor = '#fff';
+    
+    currentSlide = index;
+  };
+  
+  // 顯示下一張幻燈片
+  const nextSlide = () => {
+    const newIndex = (currentSlide + 1) % slides.length;
+    showSlide(newIndex);
+  };
+  
+  // 啟動自動輪播
+  const startSlideTimer = () => {
+    slideInterval = window.setInterval(nextSlide, 5000);
+  };
+  
+  // 停止自動輪播
+  const stopSlideTimer = () => {
+    clearInterval(slideInterval);
+  };
+  
+  // 點擊指示點切換幻燈片
+  dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+      stopSlideTimer(); // 停止自動輪播
+      showSlide(index); // 顯示所點擊的幻燈片
+      startSlideTimer(); // 重新啟動自動輪播
+    });
+  });
+  
+  // 初始狀態：顯示第一張幻燈片並啟動自動輪播
+  showSlide(0);
+  startSlideTimer();
 } 
