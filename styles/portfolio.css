@@ -639,24 +639,64 @@
 
 @media (max-width: 768px) {
   .portfolio-section {
-    padding: 4rem 0;
+    padding: 40px 0;
   }
   
-  .portfolio-grid {
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 1.2rem;
+  .portfolio-header {
+    margin-bottom: 20px;
   }
   
   .portfolio-title {
-    font-size: 2rem;
+    font-size: 28px;
+    margin-bottom: 10px;
   }
   
   .portfolio-description {
-    font-size: 1rem;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+    padding: 0 10px;
+  }
+  
+  .portfolio-tabs {
+    margin-bottom: 15px;
+    gap: 10px;
   }
   
   .portfolio-tab {
-    padding: 0.6rem 1.2rem;
+    padding: 8px 15px;
+    font-size: 0.9rem;
+  }
+  
+  .portfolio-grid {
+    gap: 15px;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+  
+  .portfolio-item {
+    border-radius: 8px;
+    margin-bottom: 0;
+  }
+  
+  .portfolio-item-image {
+    height: 150px;
+  }
+  
+  .portfolio-item-title {
+    font-size: 0.9rem;
+    padding: 10px;
+  }
+  
+  .portfolio-item-category {
+    padding: 3px 8px;
+    font-size: 0.7rem;
+  }
+  
+  .portfolio-more {
+    margin-top: 20px;
+  }
+  
+  .portfolio-more-btn {
+    padding: 8px 20px;
     font-size: 0.9rem;
   }
   
@@ -714,25 +754,58 @@
 
 @media (max-width: 480px) {
   .portfolio-section {
-    padding: 3rem 0;
+    padding: 30px 0;
   }
   
-  .portfolio-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
+  .portfolio-header {
+    margin-bottom: 15px;
   }
   
   .portfolio-title {
-    font-size: 1.8rem;
+    font-size: 24px;
   }
   
   .portfolio-description {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
+    margin-bottom: 12px;
+  }
+  
+  .portfolio-tabs {
+    margin-bottom: 12px;
+    gap: 5px;
   }
   
   .portfolio-tab {
-    padding: 0.5rem 1rem;
-    font-size: 0.8rem;
+    padding: 6px 12px;
+    font-size: 0.85rem;
+  }
+  
+  .portfolio-grid {
+    gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  }
+  
+  .portfolio-item-image {
+    height: 130px;
+  }
+  
+  .portfolio-item-title {
+    font-size: 0.85rem;
+    padding: 8px;
+  }
+  
+  .portfolio-item-category {
+    padding: 2px 6px;
+    font-size: 0.65rem;
+  }
+  
+  .portfolio-more {
+    margin-top: 15px;
+  }
+  
+  .portfolio-more-btn {
+    padding: 6px 16px;
+    font-size: 0.85rem;
   }
   
   .portfolio-item-title {
