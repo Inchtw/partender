@@ -106,7 +106,7 @@
 </head>
 <body>
   <!-- 年齡驗證模態框 -->
-  <div id="ageVerificationModal" class="modal">
+  <div id="ageVerificationModal" class="modal" style="display: flex;">
     <div class="bg-black p-8 max-w-md rounded-lg border border-gray-700 text-center">
       <h2 class="text-2xl font-bold mb-6">年齡驗證</h2>
       <p class="mb-6">您必須年滿18歲才能瀏覽本網站的內容</p>
@@ -193,6 +193,7 @@
         <li><a href="#home" class="nav-link">首頁</a></li>
         <li><a href="#about" class="nav-link">關於我們</a></li>
         <li><a href="#services" class="nav-link">服務項目</a></li>
+        <li><a href="#faq-button-section" class="nav-link">常見問題</a></li>
         <li><a href="#portfolio" class="nav-link">作品展示</a></li>
         <li><a href="#contact" class="nav-link">聯絡我們</a></li>
       </ul>
@@ -269,14 +270,14 @@
           <!-- 關於我們圖片輪播 -->
           <div class="about-image-slider animate-on-scroll" style="position: relative; overflow: hidden; border-radius: 16px; height: 380px; width: 380px; margin: 0 auto; background-color: #252538; box-shadow: 0 10px 30px rgba(0,0,0,0.3); z-index: 2;">
             <div class="about-slide active" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 1; transition: opacity 0.8s ease;">
-              <img 
-                src="https://res.cloudinary.com/df4ru2dy3/image/upload/f_auto,e_brightness:-20,e_contrast:-10/v1741538606/IMG_1861_kradsq.heic" 
-                alt="Partender 團隊"
-                data-original-src="https://res.cloudinary.com/df4ru2dy3/image/upload/f_auto/v1741538606/IMG_1861_kradsq.heic"
-                onerror="handleImageError(this)"
-                style="object-fit: cover; object-position: center; width: 100%; height: 100%; filter: brightness(0.85) contrast(1.1);"
-              >
-            </div>
+            <img 
+              src="https://res.cloudinary.com/df4ru2dy3/image/upload/f_auto,e_brightness:-20,e_contrast:-10/v1741538606/IMG_1861_kradsq.heic" 
+              alt="Partender 團隊"
+              data-original-src="https://res.cloudinary.com/df4ru2dy3/image/upload/f_auto/v1741538606/IMG_1861_kradsq.heic"
+              onerror="handleImageError(this)"
+              style="object-fit: cover; object-position: center; width: 100%; height: 100%; filter: brightness(0.85) contrast(1.1);"
+            >
+          </div>
             <div class="about-slide" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 0.8s ease;">
               <img 
                 src="https://res.cloudinary.com/df4ru2dy3/image/upload/c_crop,ar_1:1/l_image:upload:logo-all-white_yncsgj/c_scale,fl_relative,w_0.55/o_90/fl_layer_apply,g_center,x_0.03,y_0.04/v1747575543/C3EF06C0-3B8C-44CC-AC06-061A67677E90_xv69cc.png" 
@@ -318,7 +319,6 @@
           <div class="service-tag">推薦</div>
           <h3 class="service-title">預調服務</h3>
           <p class="service-description">
-            提前準備好的精緻雞尾酒，省去現場調酒的時間。高品質的瓶裝雞尾酒，隨時隨地享用，派對零負擔。多款口味可選，為您的活動增添色彩。
           </p>
           <a href="#contact" class="btn btn-sm btn-primary">立即預約</a>
         </div>
@@ -344,42 +344,243 @@
           </p>
           <a href="#contact" class="btn btn-sm btn-outline">聯絡我們</a>
         </div>
-        
-        <div class="service-card">
-          <div class="service-icon">
-            <i class="fas fa-cocktail"></i>
-          </div>
-          <h3 class="service-title">調酒課程</h3>
-          <p class="service-description">
-            我們提供專業的調酒課程，無論您是初學者還是有經驗的調酒愛好者，都能在我們的課程中學到新技能。
-          </p>
-          <a href="#contact" class="btn btn-sm btn-outline">了解更多</a>
-        </div>
-        
-        <div class="service-card">
-          <div class="service-icon">
-            <i class="fas fa-store"></i>
-          </div>
-          <h3 class="service-title">吧台設計</h3>
-          <p class="service-description">
-            我們提供專業的活動吧台設計和搭建服務，為您的活動打造獨特而吸引人的調酒吧台。
-          </p>
-          <a href="#contact" class="btn btn-sm btn-outline">聯絡我們</a>
-        </div>
-        
-        <div class="service-card">
-          <div class="service-icon">
-            <i class="fas fa-wine-bottle"></i>
-          </div>
-          <h3 class="service-title">酒水供應</h3>
-          <p class="service-description">
-            我們提供高品質的酒水供應服務，包括各類烈酒、葡萄酒、啤酒等，滿足您活動的各種需求。
-          </p>
-          <a href="#contact" class="btn btn-sm btn-outline">了解更多</a>
-        </div>
       </div>
     </div>
   </section>
+
+  <!-- 常見問題 FAQ 按鈕 -->
+  <section id="faq-button-section" class="faq-button-section">
+    <div class="container">
+      <h2>常見 <span class="highlight">問題</span></h2>
+      <p class="section-description">有疑問嗎？查看我們的常見問題或<a href="#" class="faq-contact-link" id="faqContactLink">私訊洽談</a>。</p>
+      <div class="text-center">
+        <button id="openFaqBtn" class="btn btn-primary btn-lg">查看常見問題</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ 彈窗 -->
+  <div id="faqModal" class="modal" style="display: none;">
+    <div class="modal-content faq-modal-content">
+      <div class="modal-header">
+        <h2>常見 <span class="highlight">問題</span></h2>
+        <button class="modal-close" id="closeFaqBtn">&times;</button>
+      </div>
+      
+      <div class="modal-body">
+        <div class="faq-container">
+          <!-- FAQ 項目 -->
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>你們提供哪些服務？</h3>
+              <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+            </div>
+            <div class="faq-answer">
+              <p>我們提供兩大類服務：</p>
+              <ul>
+                <li><strong>現場調酒服務</strong>：專業調酒師到場，依活動需求現場調製酒水。</li>
+                <li><strong>預調製備合作</strong>：合作預先調製好的調酒組合，適合小型聚會或遠距需求。</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>一場派對的調酒服務價格大概是多少？</h3>
+              <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+            </div>
+            <div class="faq-answer">
+              <p><strong>2025年現場調酒方案</strong>：</p>
+              <ul>
+                <li>3.5小時暢飲喝到飽</li>
+                <li>三款經典調酒（如：芭樂葡萄、莓果玫瑰鐵觀音、蘋果青茶）</li>
+                <li>每小時提供兩罐可拉酒嘴式調酒</li>
+                <li>杯數為人數 × 5</li>
+                <li>準備酒壺供酒</li>
+                <li>可依現場需求調整酸甜與酒精濃度</li>
+                <li>可提供無酒精款（人數較多請提前告知）</li>
+              </ul>
+              <p><strong>預調製備合作</strong>：</p>
+              <ul>
+                <li>一組約可提供9–18杯一般調酒量，酒精濃度10%以上</li>
+                <li>需自行加冰與混合</li>
+                <li>提供代購容器或租借酒壺服務</li>
+                <li>六張犁自取為主，因應法規需以合作形式，其他地區請私訊洽談</li>
+                <li>多組優惠，歡迎詢問</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>需要提前多久預約？</h3>
+              <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+            </div>
+            <div class="faq-answer">
+              <p>建議至少提前1個月預約，方便準備材料及提供場地與活動建議。</p>
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>可以服務哪些類型的活動？</h3>
+              <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+            </div>
+            <div class="faq-answer">
+              <p>沒有限制！以下場合都適合：</p>
+              <ul>
+                <li>生日派對</li>
+                <li>婚禮派對</li>
+                <li>下午茶會</li>
+                <li>餐敘聚會</li>
+                <li>尾牙／After Party</li>
+                <li>純粹想開趴的任何場合</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>顧客需要準備什麼場地或設備？</h3>
+              <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+            </div>
+            <div class="faq-answer">
+              <p>我們希望派對自由無設限，但為順利準備，建議提供以下資訊：</p>
+              <ul>
+                <li>活動日期與調酒時間</li>
+                <li>實際場地及預計調酒區域</li>
+                <li>可使用硬體設備：吧台、水槽、冰箱、製冰機／冰塊、飲用水</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>有提供無酒精的飲品嗎？</h3>
+              <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+            </div>
+            <div class="faq-answer">
+              <p>有的！我們可以現場調製無酒精版本，請提前告知人數以利備料。</p>
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>提供哪些風格的雞尾酒？</h3>
+              <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+            </div>
+            <div class="faq-answer">
+              <p>全數為Partender獨家原創調酒，風格以大眾喜愛的酸甜系為主，經實戰反覆調整，總有一款合你口味。</p>
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>服務時間可以彈性調整嗎？</h3>
+              <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+            </div>
+            <div class="faq-answer">
+              <p>可以！有彈性需求都歡迎私訊討論～</p>
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>可以依照主題設計客製調酒嗎？</h3>
+              <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+            </div>
+            <div class="faq-answer">
+              <p>當然可以！我們鼓勵顧客與我們一起創作屬於這場派對的專屬調酒！</p>
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>服務範圍涵蓋哪些地區？</h3>
+              <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+            </div>
+            <div class="faq-answer">
+              <p>主要以大台北地區為主，其他地區歡迎私訊洽談「預調製備合作」服務。</p>
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>有最低消費或人數限制嗎？</h3>
+              <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+            </div>
+            <div class="faq-answer">
+              <p><strong>現場調酒方案</strong>：以底價 + 超過40人後追加計費為原則，無硬性人數限制。</p>
+              <p>若人數較少，歡迎改選「預調製備合作」方案，CP值更高！</p>
+          </div>
+        </div>
+        
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>當天臨時需要延長服務，如何計價？</h3>
+              <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+            </div>
+            <div class="faq-answer">
+              <ul>
+                <li>原則上依時間比例計費</li>
+                <li>如超出原備料量，可能會有酒水不足情況</li>
+                <li>詳細可現場討論調整</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>有提供花式調酒或表演嗎？</h3>
+              <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+            </div>
+            <div class="faq-answer">
+              <p>我們把專業與心思都放在酒裡，派對的主角是你們，讓你們在微醺中閃耀動人是我們的工作！</p>
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>取消預約的政策是什麼？</h3>
+              <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+            </div>
+            <div class="faq-answer">
+              <ul>
+                <li>預約完成：需支付10%訂金</li>
+                <li>一個月前取消：全額退還訂金</li>
+                <li>一個月內取消：訂金不退</li>
+                <li>一週內取消：酌收取消費用，可作為下次預約折抵</li>
+              </ul>
+          </div>
+        </div>
+        
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>接受哪些付款方式？</h3>
+              <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+            </div>
+            <div class="faq-answer">
+              <p>銀行轉帳和LINE Pay都可以。</p>
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>可以提供試飲服務嗎？</h3>
+              <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+            </div>
+            <div class="faq-answer">
+              <p>可以！我們超愛讓大家試試看，歡迎私訊洽談～</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="text-center mt-8">
+          <a href="#contact" class="btn btn-primary btn-lg">有其他問題？聯絡我們</a>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- 作品展示 -->
   <section id="portfolio" class="portfolio-section">
@@ -574,7 +775,7 @@
     <i class="fab fa-instagram"></i>
     <span class="ig-inquiry-label">立即諮詢</span>
   </a>
-  
+
   <!-- 頁腳 -->
   <footer class="footer">
     <div class="container footer-container">

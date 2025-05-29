@@ -79,6 +79,9 @@ async function init(): Promise<void> {
   setupCounterAnimation();
   setupTestimonials();
   
+  // 初始化 FAQ
+  initializeFAQ();
+  
   // 更新頁腳年份
   updateCopyrightYear();
   
@@ -135,7 +138,9 @@ function setupMobileMenu(): void {
         mobileMenuBtn.classList.toggle('active');
         
         // 追蹤事件
-        trackEvent('navigation', 'mobile_menu_toggle');
+        if (typeof trackEvent === 'function') {
+          trackEvent('navigation', 'mobile_menu_toggle');
+        }
       });
     }
   });
@@ -146,6 +151,9 @@ function setupMobileMenu(): void {
     link.addEventListener('click', () => {
       navLinks.classList.remove('active');
       mobileMenuBtn.classList.remove('active');
+      if (typeof trackEvent === 'function') {
+        trackEvent('navigation', 'click_nav_link', link.textContent || '');
+      }
     });
   });
   
@@ -200,7 +208,9 @@ function setupGalleryItemEvents(): void {
       
       if (imgElement && titleElement) {
         showLightbox(imgElement.src, titleElement.textContent || '');
-        trackEvent('gallery', 'view_item', titleElement.textContent || '');
+        if (typeof trackEvent === 'function') {
+          trackEvent('gallery', 'view_item', titleElement.textContent || '');
+        }
       }
     });
   });
@@ -263,7 +273,9 @@ function renderServiceItems(items: ServiceItem[]): void {
   serviceCards.forEach(card => {
     card.addEventListener('click', () => {
       const title = card.querySelector('.service-title')?.textContent;
-      trackEvent('service', 'click', title || '');
+      if (typeof trackEvent === 'function') {
+        trackEvent('service', 'click', title || '');
+      }
     });
   });
 }
@@ -288,7 +300,9 @@ function setupContactForm(): void {
         alert('感謝您的訊息！我們會盡快回覆您。');
         
         // 追蹤表單提交
-        trackEvent('contact_form_submit', 'success');
+        if (typeof trackEvent === 'function') {
+          trackEvent('contact_form_submit', 'success');
+        }
         
         // 重置提交狀態
         submitted = false;
@@ -321,19 +335,29 @@ function setupAgeVerification(): void {
   if (!ageVerificationModal || !ageConfirmBtn || !ageDenyBtn) return;
   
   // 檢查 localStorage
-  if (!localStorage.getItem('ageVerified')) {
+  if (localStorage.getItem('ageVerified')) {
+    // 如果已經驗證過，隱藏彈窗
+    ageVerificationModal.style.display = 'none';
+  } else {
+    // 如果尚未驗證，確保彈窗顯示
     ageVerificationModal.style.display = 'flex';
+    document.body.style.overflow = 'hidden'; // 防止頁面滾動
   }
   
   ageConfirmBtn.addEventListener('click', () => {
     localStorage.setItem('ageVerified', 'true');
     ageVerificationModal.style.display = 'none';
-    trackEvent('age_verification', 'confirm');
+    document.body.style.overflow = ''; // 恢復頁面滾動
+    if (typeof trackEvent === 'function') {
+      trackEvent('age_verification', 'confirm');
+    }
   });
   
   ageDenyBtn.addEventListener('click', () => {
     window.location.href = 'https://www.google.com';
-    trackEvent('age_verification', 'deny');
+    if (typeof trackEvent === 'function') {
+      trackEvent('age_verification', 'deny');
+    }
   });
 }
 
@@ -472,7 +496,9 @@ function initializeIgInquiryButton() {
       document.body.style.overflow = 'hidden'; // 防止頁面滾動
       
       // 追蹤事件
-      trackEvent('contact', 'click_instagram_button');
+      if (typeof trackEvent === 'function') {
+        trackEvent('contact', 'click_instagram_button');
+      }
     }
   });
   
@@ -490,7 +516,9 @@ function initializeIgInquiryButton() {
   igConfirmBtn.addEventListener('click', () => {
     if (targetUrl) {
       window.open(targetUrl, '_blank');
-      trackEvent('contact', 'confirm_instagram_redirect');
+      if (typeof trackEvent === 'function') {
+        trackEvent('contact', 'confirm_instagram_redirect');
+      }
     }
     closeModal();
   });
@@ -498,14 +526,18 @@ function initializeIgInquiryButton() {
   // 取消按鈕點擊事件
   igCancelBtn.addEventListener('click', () => {
     closeModal();
-    trackEvent('contact', 'cancel_instagram_redirect');
+    if (typeof trackEvent === 'function') {
+      trackEvent('contact', 'cancel_instagram_redirect');
+    }
   });
   
   // 點擊背景關閉
   igConfirmModal.addEventListener('click', (e) => {
     if (e.target === igConfirmModal) {
       closeModal();
-      trackEvent('contact', 'cancel_instagram_redirect');
+      if (typeof trackEvent === 'function') {
+        trackEvent('contact', 'cancel_instagram_redirect');
+      }
     }
   });
 }
@@ -570,4 +602,163 @@ function initializeAboutSlider() {
   // 初始狀態：顯示第一張幻燈片並啟動自動輪播
   showSlide(0);
   startSlideTimer();
+}
+
+/**
+ * 初始化 FAQ
+ */
+function initializeFAQ() {
+  const faqItems = document.querySelectorAll('.faq-item');
+  const faqContactLink = document.getElementById('faqContactLink');
+  const igInquiryBtn = document.getElementById('igInquiryBtn');
+  const openFaqBtn = document.getElementById('openFaqBtn');
+  const faqModal = document.getElementById('faqModal');
+  const closeFaqBtn = document.getElementById('closeFaqBtn');
+  const faqContactBtn = document.querySelector('#faqModal .btn-primary.btn-lg');
+  
+  // 設置打開 FAQ 彈窗事件
+  if (openFaqBtn && faqModal) {
+    openFaqBtn.addEventListener('click', () => {
+      faqModal.style.display = 'flex';
+      document.body.style.overflow = 'hidden'; // 防止頁面滾動
+      
+      // 使用 setTimeout 確保 display:flex 應用後再添加過渡效果
+      setTimeout(() => {
+        faqModal.classList.add('show');
+      }, 10);
+      
+      // 追蹤事件
+      if (typeof trackEvent === 'function') {
+        trackEvent('faq', 'open_faq_modal');
+      }
+    });
+  }
+  
+  // 設置關閉 FAQ 彈窗事件
+  if (closeFaqBtn && faqModal) {
+    // 封裝關閉彈窗的邏輯
+    const closeFaqModal = () => {
+      faqModal.classList.remove('show');
+      // 等待過渡動畫完成後再隱藏彈窗
+      setTimeout(() => {
+        faqModal.style.display = 'none';
+        document.body.style.overflow = ''; // 恢復頁面滾動
+      }, 300);
+    };
+    
+    // 關閉按鈕點擊事件
+    closeFaqBtn.addEventListener('click', () => {
+      closeFaqModal();
+      if (typeof trackEvent === 'function') {
+        trackEvent('faq', 'close_faq_modal');
+      }
+    });
+    
+    // 點擊彈窗背景關閉
+    faqModal.addEventListener('click', (e) => {
+      if (e.target === faqModal) {
+        closeFaqModal();
+        if (typeof trackEvent === 'function') {
+          trackEvent('faq', 'close_faq_background_click');
+        }
+      }
+    });
+    
+    // ESC 鍵關閉彈窗
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && faqModal.style.display === 'flex') {
+        closeFaqModal();
+        if (typeof trackEvent === 'function') {
+          trackEvent('faq', 'close_faq_escape_key');
+        }
+      }
+    });
+    
+    // 設置「有其他問題？聯絡我們」按鈕點擊事件
+    if (faqContactBtn) {
+      faqContactBtn.addEventListener('click', () => {
+        closeFaqModal();
+        if (typeof trackEvent === 'function') {
+          trackEvent('faq', 'contact_us_from_faq');
+        }
+      });
+    }
+  }
+  
+  // 設置 FAQ 項目點擊事件
+  faqItems.forEach(item => {
+    const question = item.querySelector('.faq-question');
+    if (!question) return;
+    
+    question.addEventListener('click', () => {
+      // 檢查是否已經處於活動狀態
+      const isActive = item.classList.contains('active');
+      
+      // 關閉所有其他 FAQ 項目
+      faqItems.forEach(otherItem => {
+        if (otherItem !== item) {
+          otherItem.classList.remove('active');
+        }
+      });
+      
+      // 切換當前 FAQ 項目的狀態
+      if (isActive) {
+        item.classList.remove('active');
+      } else {
+        item.classList.add('active');
+        
+        // 滾動到視圖中（如果需要）
+        setTimeout(() => {
+          const rect = item.getBoundingClientRect();
+          const isVisible = (
+            rect.top >= 0 &&
+            rect.bottom <= window.innerHeight
+          );
+          
+          if (!isVisible && faqModal && faqModal.style.display === 'flex') {
+            item.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          }
+        }, 300);
+      }
+      
+      // 追蹤事件
+      if (typeof trackEvent === 'function') {
+        trackEvent('faq', 'toggle_faq_item', question.textContent || '');
+      }
+    });
+  });
+  
+  // 設置「私訊洽談」連結
+  if (faqContactLink && igInquiryBtn) {
+    faqContactLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      
+      // 如果 FAQ 彈窗打開中，先關閉
+      if (faqModal && faqModal.style.display === 'flex') {
+        faqModal.style.display = 'none';
+        document.body.style.overflow = '';
+      }
+      
+      // 滾動到頁面底部
+      window.scrollTo({
+        top: document.body.scrollHeight,
+        behavior: 'smooth'
+      });
+      
+      // 突出顯示 Instagram 按鈕
+      setTimeout(() => {
+        igInquiryBtn.classList.add('pulse-highlight');
+        
+        // 3秒後移除高亮效果
+        setTimeout(() => {
+          igInquiryBtn.classList.remove('pulse-highlight');
+        }, 3000);
+      }, 800);
+      
+      // 追蹤事件
+      if (typeof trackEvent === 'function') {
+        trackEvent('faq', 'click_private_message');
+      }
+    });
+  }
 } 
